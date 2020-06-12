@@ -15,10 +15,11 @@ const defaultPlayerId = v4();
 export default function Game() {
 	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
 	const [issues, setIssues] = useState([]);
+	const [players, setPlayers] = useState([]);
+	const [activePlayerId, setActivePlayerId] = useState();
 
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [modalIssue, setModalIssue] = useState();
-	const closeModal = () => setIsOpen(false);
 
 	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
 
@@ -26,14 +27,15 @@ export default function Game() {
 	console.log(`gameId: ${gameId}`);
 
 	const joinGame = () => {
-		setPlayerId(playerId);
 		sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId });
 	}
 	const handleMessage = (event) => {
 		const { type, ...payload } = JSON.parse(event.data);
 		switch (type) {
 			case 'GAME_STATE':
+				setActivePlayerId(payload.activePlayerId);
 				setPlayerId(payload.playerId);
+				setPlayers(payload.players);
 				setIssues(payload.issues);
 				break;
 			case 'UPDATED_POINTS': {
@@ -52,6 +54,10 @@ export default function Game() {
 			case 'ISSUE_CLOSED': {
 				setIsOpen(false);
 				setModalIssue(undefined);
+				break;
+			}
+			case 'PLAYER_ADDED': {
+				setPlayers(payload.players)
 				break;
 			}
 			default:
@@ -86,6 +92,21 @@ export default function Game() {
 		})
 	}
 
+	const onMoveSave = () => {
+		sendJsonMessage({
+			type: 'CONFIRM_MOVE',
+			playerId,
+			gameId,
+		});
+	}
+	const onMovePass = () => {
+		sendJsonMessage({
+			type: 'NO_CHANGE',
+			playerId,
+			gameId,
+		})
+	}
+
 	const {
 		sendJsonMessage,
 		lastJsonMessage,
@@ -99,12 +120,23 @@ export default function Game() {
 	return (
 		<div className="Game">
 			<div className="game-sidebar">
-				<Sidebar />
+				<Sidebar
+					activePlayerId={activePlayerId}
+					onMovePass={onMovePass}
+					onMoveSave={onMoveSave}
+					players={players} />
 			</div>
 			<div className="game-table">
-				<Table onCardMove={onCardMove} onCardClick={onCardClick} issues={issues} />
+				<Table
+					onCardClick={onCardClick}
+					onCardMove={onCardMove}
+					issues={issues} />
 			</div>
-			<Modal isOpen={modalIsOpen} onRequestClose={onModalClose}><h1>Hello from modal {modalIssue && modalIssue.title}</h1></Modal>
+			<Modal
+				isOpen={modalIsOpen}
+				onRequestClose={onModalClose}>
+					<h1>Hello from modal {modalIssue && modalIssue.title}</h1>
+			</Modal>
 		</div>
 	);
 }
