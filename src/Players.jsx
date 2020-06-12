@@ -18,14 +18,6 @@ const icons = [
 	squirrel
 ]
 
-const names = [
-	'Michael Scott',
-	'Dwight Schrute',
-	'Jim Halpert',
-	'Pam Beesly',
-	'Andy Bernard',
-];
-
 export default function Players(props) {
 	return (
 		<div className="Players">
@@ -33,7 +25,7 @@ export default function Players(props) {
 			{props.players.map((player, index) => (
 				<div className={`Player ${player.id === props.activePlayerId ? 'is-active' : ''}`} key={player.id}>
 					<img src={icons[index]} alt="avatar" />
-					<span>{names[index]}</span>
+					<span>{player.name}</span>
 				</div>
 			))}
 		</div>
