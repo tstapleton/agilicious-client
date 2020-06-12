@@ -29,7 +29,7 @@ export default function Game() {
 
 	const joinGame = () => {
 		if (playerId) {
-			sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId });
+			sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId, name: playerName });
 		}
 	}
 	const handleMessage = (event) => {
