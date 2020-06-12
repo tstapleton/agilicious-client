@@ -4,23 +4,30 @@ import { useParams } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
 import Sidebar from './Sidebar';
 import Table from './Table';
+import useLocalStorage from 'react-use-localstorage';
+import { v4 } from 'uuid';
 
 import './Game.css';
 
 Modal.setAppElement('#root');
+const defaultPlayerId = v4();
 
 export default function Game() {
 	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
-	const [playerId, setPlayerId] = useState();
 	const [issues, setIssues] = useState([]);
 
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const closeModal = () => setIsOpen(false);
 
+	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
+
 	const { gameId } = useParams();
 	console.log(`gameId: ${gameId}`);
 
-	const joinGame = () => sendJsonMessage({ type: 'JOIN_GAME', gameId });
+	const joinGame = () => {
+		setPlayerId(playerId);
+		sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId });
+	}
 	const handleMessage = (event) => {
 		const { type, ...payload } = JSON.parse(event.data);
 		switch (type) {
@@ -37,7 +44,7 @@ export default function Game() {
 		sendJsonMessage({
 			type: 'UPDATE_POINTS',
 			playerId,
-			points: targetLaneId,
+			points: parseInt(targetLaneId, 10),
 			issueId: cardId,
 			gameId,
 		})

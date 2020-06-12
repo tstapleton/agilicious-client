@@ -37,7 +37,7 @@ const getData = (issues) => {
 	const lanes = points.map(p => ({
 		id: `${p}`,
 		title: `${p}`,
-		cards: cards.filter(card => card.metadata.originalPoints === p),
+		cards: cards.filter(card => card.metadata.currentPoints === p),
 	}));
 
 	return {
