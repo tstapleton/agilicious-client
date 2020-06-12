@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
 import Sidebar from './Sidebar';
 import Table from './Table';
@@ -13,6 +13,9 @@ Modal.setAppElement('#root');
 const defaultPlayerId = v4();
 
 export default function Game() {
+	const { gameId } = useParams();
+	console.log(`gameId: ${gameId}`);
+
 	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
 	const [issues, setIssues] = useState([]);
 	const [players, setPlayers] = useState([]);
@@ -22,12 +25,12 @@ export default function Game() {
 	const [modalIssue, setModalIssue] = useState();
 
 	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
-
-	const { gameId } = useParams();
-	console.log(`gameId: ${gameId}`);
+	const [playerName, setPlayerName] = useLocalStorage('playerName', '');
 
 	const joinGame = () => {
-		sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId });
+		if (playerId) {
+			sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId });
+		}
 	}
 	const handleMessage = (event) => {
 		const { type, ...payload } = JSON.parse(event.data);
@@ -114,7 +117,6 @@ export default function Game() {
 			gameId,
 		})
 	}
-
 	const {
 		sendJsonMessage,
 		lastJsonMessage,
@@ -124,6 +126,10 @@ export default function Game() {
 		onMessage: handleMessage,
 		shouldReconnect: (closeEvent) => true,
 	});
+
+	if (!playerId || !playerName) {
+		return <Redirect to={`/games/${gameId}/join`} />;
+	}
 
 	return (
 		<div className="Game">
