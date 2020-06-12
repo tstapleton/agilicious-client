@@ -5,20 +5,23 @@ import { v4 } from 'uuid';
 import './NewGame.css';
 import SidebarHeader from './SidebarHeader';
 
+const gameId = v4();
 const defaultPlayerId = v4();
 
 export default function NewGame() {
-	const gameId = v4();
 	const [playerName, setPlayerName] = useLocalStorage('playerName', '');
 	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
 	const [fileName, setFileName] = useState('');
+
+	const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+	const baseUrl = `${protocol}://${process.env.REACT_APP_BASE_URL}`;
 
 	const handleNameChange = (event) => {
 		setPlayerName(event.target.value);
 	}
 
 	const uploadIssues = async (data) => {
-		const response = await fetch(`http://localhost:8000/games/${gameId}/issues`, {
+		await fetch(`${baseUrl}/api/games/${gameId}/issues`, {
 			method: 'PUT',
 			headers: {
 				'content-type': 'text/plain'
@@ -52,7 +55,7 @@ export default function NewGame() {
 			</form>
 			<Link to={`/games/${gameId}`}><button>Start a new game</button></Link>
 			<p>Share this game with your teammates:</p>
-			<p>{`https://www.agilitious.app/games/${gameId}`}</p>
+			<p>{`${baseUrl}/games/${gameId}`}</p>
 		</div>
 	)
 }
