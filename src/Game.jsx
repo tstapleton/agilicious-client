@@ -60,6 +60,14 @@ export default function Game() {
 				setPlayers(payload.players)
 				break;
 			}
+			case 'MOVE_CONFIRMED': {
+				setActivePlayerId(payload.activePlayerId);
+				break;
+			}
+			case 'PLAYER_SKIPPED': {
+				setActivePlayerId(payload.activePlayerId);
+				break;
+			}
 			default:
 				return;
 		}
@@ -122,12 +130,14 @@ export default function Game() {
 			<div className="game-sidebar">
 				<Sidebar
 					activePlayerId={activePlayerId}
+					currentPlayerId={playerId}
 					onMovePass={onMovePass}
 					onMoveSave={onMoveSave}
 					players={players} />
 			</div>
 			<div className="game-table">
 				<Table
+					isMoveAllowed={playerId === activePlayerId}
 					onCardClick={onCardClick}
 					onCardMove={onCardMove}
 					issues={issues} />

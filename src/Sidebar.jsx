@@ -14,7 +14,7 @@ export default function Sidebar(props) {
 				<Players players={props.players} activePlayerId={props.activePlayerId} />
 			</div>
 			<footer className="sidebar-footer">
-				<GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />
+				{props.currentPlayerId === props.activePlayerId && <GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />}
 			</footer>
 		</div>
 	)
