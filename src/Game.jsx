@@ -22,9 +22,15 @@ export default function Game() {
 
 	const joinGame = () => sendJsonMessage({ type: 'JOIN_GAME', gameId });
 	const handleMessage = (event) => {
-		const data = JSON.parse(event.data);
-		setPlayerId(data.gameState.playerId);
-		setIssues(data.gameState.issues);
+		const { type, ...payload } = JSON.parse(event.data);
+		switch (type) {
+			case 'GAME_STATE':
+				setPlayerId(payload.playerId);
+				setIssues(payload.issues);
+				break;
+			default:
+				return;
+		}
 	}
 
 	const onCardMove = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
