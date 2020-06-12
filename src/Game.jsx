@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
 import { useParams } from 'react-router-dom';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
+import useWebSocket from 'react-use-websocket';
 import Sidebar from './Sidebar';
 import Table from './Table';
 
 import './Game.css';
 
+Modal.setAppElement('#root');
+
 export default function Game() {
 	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
 	const [playerId, setPlayerId] = useState();
 	const [issues, setIssues] = useState([]);
+
+	const [modalIsOpen, setIsOpen] = useState(false);
+	const closeModal = () => setIsOpen(false);
 
 	const { gameId } = useParams();
 	console.log(`gameId: ${gameId}`);
@@ -31,6 +37,11 @@ export default function Game() {
 		})
 	}
 
+	const onCardClick = (cardId, metadata, laneId) => {
+		console.log(`onCardClick ${cardId}`);
+		setIsOpen(true);
+	}
+
 	const {
 		sendJsonMessage,
 		lastJsonMessage,
@@ -47,8 +58,9 @@ export default function Game() {
 				<Sidebar />
 			</div>
 			<div className="game-table">
-				<Table onCardMove={onCardMove} issues={issues} />
+				<Table onCardMove={onCardMove} onCardClick={onCardClick} issues={issues} />
 			</div>
+			<Modal isOpen={modalIsOpen} onRequestClose={closeModal}><h1>Hello from modal</h1></Modal>
 		</div>
 	);
 }
