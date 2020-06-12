@@ -48,7 +48,7 @@ const getData = (issues) => {
 function Table(props) {
 	const data = getData(props.issues);
 	return (
-		<Board data={data} hideCardDeleteIcon={true} handleDragEnd={props.onCardMove} />
+		<Board data={data} hideCardDeleteIcon={true} handleDragEnd={props.onCardMove} onCardClick={props.onCardClick} />
 	);
 }
 
