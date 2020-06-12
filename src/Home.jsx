@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
-import deer from './deer.svg';
+import deer from './icons/deer.svg';
 import './Home.css';
 
 export default function Home() {

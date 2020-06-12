@@ -1,13 +1,39 @@
 import React from 'react';
 import './Players.css';
-import mock from './data.json';
+import bird from './icons/bird.svg';
+import birdTwo from './icons/bird-2.svg';
+import chicken from './icons/chicken.svg';
+import fox from './icons/fox.svg';
+import hedgehog from './icons/hedgehog.svg';
+import rabbit from './icons/rabbit.svg';
+import squirrel from './icons/squirrel.svg';
 
-export default function Players() {
+const icons = [
+	bird,
+	birdTwo,
+	chicken,
+	fox,
+	hedgehog,
+	rabbit,
+	squirrel
+]
+
+const names = [
+	'Michael Scott',
+	'Dwight Schrute',
+	'Jim Halpert',
+	'Pam Beesly',
+	'Andy Bernard',
+];
+
+export default function Players(props) {
 	return (
 		<div className="Players">
-			{mock.players.map((player) => (
-				<div className="Player" key={player.id}>
-					<span>{player.name}</span>
+			<header>Players</header>
+			{props.players.map((player, index) => (
+				<div className={`Player ${player.id === props.activePlayerId ? 'is-active' : ''}`} key={player.id}>
+					<img src={icons[index]} alt="avatar" />
+					<span>{names[index]}</span>
 				</div>
 			))}
 		</div>

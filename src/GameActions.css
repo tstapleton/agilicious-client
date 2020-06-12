@@ -3,8 +3,23 @@
 	height: 100%;
 }
 .GameActions button {
-	margin: 0 10px;
-	font-size: 18px;
-	padding: 10px;
+	background: var(--color-orange-light);
+	border-radius: 30px;
+	border: 0 solid var(--color-gray);
+	color: var(--color-white);
+	cursor: pointer;
+	font-size: 14px;
 	line-height: 20px;
+	margin: 0 10px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+}
+.GameActions button:hover {
+	background: var(--color-orange);
+}
+.GameActions button:active {
+	background: var(--color-orange-dark);
+}
+.GameActions button:focus {
+	outline: none;
 }

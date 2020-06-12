@@ -1,5 +1,5 @@
 .Sidebar {
-	background: purple;
+	background: var(--color-gray-light);
 	display: grid;
 	grid-template-columns: auto;
 	grid-template-rows: 60px auto 60px;

@@ -1,0 +1,14 @@
+.game-table .react-trello-board {
+	background: var(--color-black);
+}
+.game-table .react-trello-lane {
+	background: var(--color-gray);
+}
+.react-trello-lane header {
+	text-align: center;
+}
+.react-trello-lane header span {
+	width: 100%;
+	font-family: 'MuliBold';
+	color: var(--color-black);
+}

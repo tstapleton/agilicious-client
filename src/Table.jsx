@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from 'react-trello';
-import mock from './data.json';
+
+import './Table.css';
 
 const getTags = (issue) => {
 	return [];

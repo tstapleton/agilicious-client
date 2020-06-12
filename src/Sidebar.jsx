@@ -4,17 +4,17 @@ import Players from './Players';
 import GameActions from './GameActions';
 import './Sidebar.css';
 
-export default function Sidebar() {
+export default function Sidebar(props) {
 	return (
 		<div className="Sidebar">
 			<header className="sidebar-header">
 				<SidebarHeader />
 			</header>
 			<div className="sidebar-main">
-				<Players />
+				<Players players={props.players} activePlayerId={props.activePlayerId} />
 			</div>
 			<footer className="sidebar-footer">
-				<GameActions />
+				<GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />
 			</footer>
 		</div>
 	)
