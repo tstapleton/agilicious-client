@@ -16,7 +16,7 @@ export default function Game() {
 	const { gameId } = useParams();
 	console.log(`gameId: ${gameId}`);
 
-	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
+	const [socketUrl, setSocketUrl] = useState(`ws://${process.env.REACT_APP_BASE_URL}`);
 	const [issues, setIssues] = useState([]);
 	const [players, setPlayers] = useState([]);
 	const [activePlayerId, setActivePlayerId] = useState();
