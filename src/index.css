@@ -1,13 +1,34 @@
 body {
+	font-family: 'MuliRegular';
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'TradeshiftDisplay';
+}
+strong {
+	font-family: 'MuliBold';
+}
+em {
+	font-family: 'MuliItalic';
+}
+
+@font-face {
+	font-family: 'TradeshiftDisplay';
+	src: local('TradeshiftDisplay'), url('./fonts/Tradeshift-Display-Medium.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'MuliRegular';
+	src: local('MuliRegular'), url('./fonts/Muli-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'MuliBold';
+	src: local('MuliBold'), url('./fonts/Muli-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'MuliItalic';
+	src: local('MuliItalic'), url('./fonts/Muli-Italic.ttf') format('truetype');
 }
