@@ -62,3 +62,9 @@ em {
 	font-family: 'MuliItalic';
 	src: local('MuliItalic'), url('./fonts/Muli-Italic.ttf') format('truetype');
 }
+
+/* fixes unable to drop some cards on some lanes */
+/* https://github.com/rcdexta/react-trello/issues/203#issuecomment-570900387 */
+.react-trello-lane .smooth-dnd-container {
+	min-height: calc(100vh - 68px);
+}
