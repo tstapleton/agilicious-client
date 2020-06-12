@@ -37,7 +37,7 @@ const getData = (issues) => {
 	const points = [1, 2, 3, 5, 8, 13, 21, 34];
 	const lanes = points.map(p => ({
 		id: `${p}`,
-		title: `${p}`,
+		title: p === 1 ? `${p} Point` : `${p} Points`,
 		cards: cards.filter(card => card.metadata.currentPoints === p),
 	}));
 
@@ -49,7 +49,12 @@ const getData = (issues) => {
 function Table(props) {
 	const data = getData(props.issues);
 	return (
-		<Board data={data} hideCardDeleteIcon={true} handleDragEnd={props.onCardMove} onCardClick={props.onCardClick} />
+		<Board
+			data={data}
+			cardDraggable={props.isMoveAllowed}
+			hideCardDeleteIcon={true}
+			handleDragEnd={props.onCardMove}
+			onCardClick={props.onCardClick} />
 	);
 }
 
