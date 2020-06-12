@@ -6,6 +6,33 @@
 	height: 120px;
 }
 .Home h1 {
-	margin-top: 0;
+	margin-top: -6px;
+	margin-bottom: 0;
 	text-transform: lowercase;
+}
+.Home p {
+	font-size: 18px;
+	margin-top: 6px;
+	margin-bottom: 60px;
+}
+.Home button {
+	background: var(--color-orange-light);
+	border-radius: 30px;
+	border: 0;
+	color: var(--color-white);
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 0 10px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+}
+.Home button:hover {
+	background: var(--color-orange);
+}
+.Home button:active {
+	background: var(--color-orange-dark);
+}
+.Home button:focus {
+	outline: none;
 }
