@@ -17,6 +17,7 @@ export default function Game() {
 	const [issues, setIssues] = useState([]);
 
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [modalIssue, setModalIssue] = useState();
 	const closeModal = () => setIsOpen(false);
 
 	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
@@ -35,6 +36,24 @@ export default function Game() {
 				setPlayerId(payload.playerId);
 				setIssues(payload.issues);
 				break;
+			case 'UPDATED_POINTS': {
+				const updatedIssues = issues.map(issue =>
+					issue.id === payload.issue.id ? payload.issue : issue
+				)
+				setIssues(updatedIssues);
+				break;
+			}
+			case 'ISSUE_OPENED': {
+				const issue = issues.find(i => i.id === payload.issueId);
+				setIsOpen(true);
+				setModalIssue(issue);
+				break;
+			}
+			case 'ISSUE_CLOSED': {
+				setIsOpen(false);
+				setModalIssue(undefined);
+				break;
+			}
 			default:
 				return;
 		}
@@ -51,8 +70,20 @@ export default function Game() {
 	}
 
 	const onCardClick = (cardId, metadata, laneId) => {
-		console.log(`onCardClick ${cardId}`);
-		setIsOpen(true);
+		sendJsonMessage({
+			type: 'OPEN_ISSUE',
+			playerId,
+			issueId: cardId,
+			gameId,
+		})
+	}
+	const onModalClose = () => {
+		sendJsonMessage({
+			type: 'CLOSE_ISSUE',
+			playerId,
+			issueId: modalIssue.id,
+			gameId,
+		})
 	}
 
 	const {
@@ -73,7 +104,7 @@ export default function Game() {
 			<div className="game-table">
 				<Table onCardMove={onCardMove} onCardClick={onCardClick} issues={issues} />
 			</div>
-			<Modal isOpen={modalIsOpen} onRequestClose={closeModal}><h1>Hello from modal</h1></Modal>
+			<Modal isOpen={modalIsOpen} onRequestClose={onModalClose}><h1>Hello from modal {modalIssue && modalIssue.title}</h1></Modal>
 		</div>
 	);
 }
