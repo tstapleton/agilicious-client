@@ -7,13 +7,29 @@ import Table from './Table';
 import './Game.css';
 
 export default function Game() {
+	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
+	const [playerId, setPlayerId] = useState();
+	const [issues, setIssues] = useState([]);
+
 	const { gameId } = useParams();
 	console.log(`gameId: ${gameId}`);
 
 	const joinGame = () => sendJsonMessage({ type: 'JOIN_GAME', gameId });
-	const handleMessage = (event) => console.log(event);
+	const handleMessage = (event) => {
+		const data = JSON.parse(event.data);
+		setPlayerId(data.gameState.playerId);
+		setIssues(data.gameState.issues);
+	}
 
-	const [socketUrl, setSocketUrl] = useState('ws://localhost:8000');
+	const onCardMove = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
+		sendJsonMessage({
+			type: 'UPDATE_POINTS',
+			playerId,
+			points: targetLaneId,
+			issueId: cardId,
+			gameId,
+		})
+	}
 
 	const {
 		sendJsonMessage,
@@ -31,7 +47,7 @@ export default function Game() {
 				<Sidebar />
 			</div>
 			<div className="game-table">
-				<Table />
+				<Table onCardMove={onCardMove} issues={issues} />
 			</div>
 		</div>
 	);
