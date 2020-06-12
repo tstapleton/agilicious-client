@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
-import deer from './icons/deer.svg';
+import deer from './icons/deer-black.svg';
 import './Home.css';
 
 export default function Home() {
@@ -10,7 +10,8 @@ export default function Home() {
 		<div className="Home">
 			<img src={deer} alt="logo" />
 			<h1>Agilitious</h1>
-			<Link to={`/games/${gameId}`}>Start a new game</Link>
+			<p>An expeditious and nutritious estimation game</p>
+			<Link to={`/games/${gameId}`}><button>Start a new game</button></Link>
 		</div>
 	);
 }
