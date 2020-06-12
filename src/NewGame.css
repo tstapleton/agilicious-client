@@ -1,0 +1,106 @@
+.NewGame {
+	margin: 10px auto 0;
+	text-align: center;
+	width: 600px;
+}
+
+.NewGame form {
+	width: 200px;
+	margin: 60px auto 0;
+}
+.NewGame button {
+	background: var(--color-orange-light);
+	border-radius: 30px;
+	border: 0;
+	color: var(--color-white);
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 40px 10px 80px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+}
+.NewGame button:hover {
+	background: var(--color-orange);
+}
+.NewGame button:active {
+	background: var(--color-orange-dark);
+}
+.NewGame button:focus {
+	outline: none;
+}
+.NewGame label {
+	text-transform: uppercase;
+	text-align: left;
+	font-size: 12px;
+	display: block;
+	margin-bottom: 4px;
+}
+.NewGame input[type="text"] {
+	border: 1px solid var(--color-gray);
+	color: var(--color-black);
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: 'MuliRegular';
+	border-radius: 3px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #fff;
+	height: 24px;
+	white-space: nowrap;
+	word-wrap: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.NewGame p + p {
+	margin-top: -10px;
+}
+.NewGame input + label {
+	margin-top: 20px;
+}
+
+.custom-file-input {
+	color: transparent;
+	border: 1px solid var(--color-gray);
+	height: 24px;
+	width: 100%;
+	padding: 4px 10px;
+	border-radius: 3px;
+}
+.custom-file-input::-webkit-file-upload-button {
+	visibility: hidden;
+}
+.custom-file-input::before {
+	content: 'Select a file';
+	color: var(--color-white);
+	display: inline-block;
+	border-radius: 12px;
+	background-color: var(--color-orange);
+	padding: 2px 10px;
+	line-height: 14px;
+	margin-top: 3px;
+	margin-left: -6px;
+	outline: none;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	cursor: pointer;
+	font-size: 8pt;
+	text-transform: uppercase;
+	font-family: 'MuliRegular';
+}
+.custom-file-input:hover::before {
+	border-color: black;
+}
+.custom-file-input:active::before {
+	background-color: var(--color-orange-dark);
+}
+.custom-file-input:active, .custom-file-input:focus {
+	outline: 0;
+}
+/* .custom-file-input:active::before {
+	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+} */

@@ -1,0 +1,64 @@
+.JoinGame {
+	margin: 10px auto 0;
+	text-align: center;
+	width: 600px;
+}
+
+.JoinGame form {
+	width: 200px;
+	margin: 60px auto 0;
+}
+.JoinGame button {
+	background: var(--color-orange-light);
+	border-radius: 30px;
+	border: 0;
+	color: var(--color-white);
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 40px 10px 80px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+}
+.JoinGame button:hover {
+	background: var(--color-orange);
+}
+.JoinGame button:active {
+	background: var(--color-orange-dark);
+}
+.JoinGame button:focus {
+	outline: none;
+}
+.JoinGame label {
+	text-transform: uppercase;
+	text-align: left;
+	font-size: 12px;
+	display: block;
+	margin-bottom: 4px;
+}
+.JoinGame input[type="text"] {
+	border: 1px solid var(--color-gray);
+	color: var(--color-black);
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: 'MuliRegular';
+	border-radius: 3px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #fff;
+	height: 24px;
+	white-space: nowrap;
+	word-wrap: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.JoinGame p + p {
+	margin-top: -10px;
+}
+.JoinGame input + label {
+	margin-top: 20px;
+}
