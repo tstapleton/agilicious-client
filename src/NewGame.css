@@ -101,6 +101,16 @@
 .custom-file-input:active, .custom-file-input:focus {
 	outline: 0;
 }
-/* .custom-file-input:active::before {
-	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-} */
+.NewGame .file-upload-name {
+	background: white;
+	position: relative;
+	top: -31px;
+	left: 4px;
+	padding: 4px;
+	width: 202px;
+	display: block;
+	text-align: left;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
