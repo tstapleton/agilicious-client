@@ -4,6 +4,8 @@
 .game-table .react-trello-lane {
 	background: var(--color-gray);
 }
+
+/* story points column label */
 .react-trello-lane header {
 	text-align: center;
 }
@@ -11,4 +13,25 @@
 	width: 100%;
 	font-family: 'MuliBold';
 	color: var(--color-black);
+}
+
+/* story title */
+.react-trello-card header {
+	text-align: left;
+}
+.react-trello-card header > span:first-of-type {
+	white-space: initial;
+}
+.react-trello-card header > span:last-of-type {
+	display: none;
+}
+
+.react-trello-card > div:first-of-type {
+	max-height: 78px;
+	overflow: hidden;
+}
+
+/* epic tag */
+.react-trello-card > div:last-of-type > span {
+	white-space: initial;
 }
