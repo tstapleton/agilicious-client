@@ -1,4 +1,31 @@
 {
+	"players": [
+		{
+			"id": "6f6c16a5-53cb-46e4-ae04-3c7b09274772",
+			"name": "Michael Scott",
+			"connected": true
+		},
+		{
+			"id": "5a46ccc5-de78-4568-9ff6-21806babc890",
+			"name": "Dwight Schrute",
+			"connected": true
+		},
+		{
+			"id": "167783bd-7a73-44bf-9c61-e442a5cd62ee",
+			"name": "Jim Halpert",
+			"connected": true
+		},
+		{
+			"id": "a6a3f403-5845-4057-9b3b-88959a8c9186",
+			"name": "Pam Beesly",
+			"connected": true
+		},
+		{
+			"id": "f9370ee5-bb3f-4637-aae1-171cef3f3182",
+			"name": "Andy Bernard",
+			"connected": true
+		}
+	],
 	"issues": [
 		{
 			"id": "2d47a5df-0bb8-40a6-a4be-de93c0312f77",

@@ -1,0 +1,14 @@
+.Game {
+	display: grid;
+	grid-template-columns: 300px auto;
+	grid-template-rows: 1;
+}
+.game-sidebar {
+	grid-column: 1;
+	align-self: start;
+	height: 100%;
+}
+.game-table {
+	grid-column: 2;
+	overflow-x: scroll;
+}

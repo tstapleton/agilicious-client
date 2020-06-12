@@ -1,0 +1,19 @@
+.SidebarHeader {
+	height: 60px;
+	text-align: center;
+}
+.SidebarHeader img {
+	height: 30px;
+	margin: 15px 0;
+}
+.SidebarHeader h1 {
+	display: inline-block;
+	font-size: 24px;
+	height: 60px;
+	line-height: 60px;
+	margin: 0;
+	margin-left: 10px;
+	padding: 0;
+	text-transform: lowercase;
+	vertical-align: top;
+}
