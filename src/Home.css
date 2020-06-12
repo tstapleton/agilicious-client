@@ -2,3 +2,10 @@
 	margin-top: 80px;
 	text-align: center;
 }
+.Home img {
+	height: 120px;
+}
+.Home h1 {
+	margin-top: 0;
+	text-transform: lowercase;
+}
