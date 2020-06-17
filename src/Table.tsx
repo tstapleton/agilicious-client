@@ -1,9 +1,17 @@
 import React from 'react';
 import Board from 'react-trello';
+import * as Types from './types';
 
 import './Table.css';
 
-const getTags = (issue, issues) => {
+interface Props {
+	issues: Types.Issue[];
+	isMoveAllowed: boolean;
+	onCardClick: (cardId: string, sourceLaneId: string, targetLaneId: string, position: number, cardDetails: any) => void;
+	onCardMove: (cardId: string, sourceLaneId: string, targetLaneId: string, position: number, cardDetails: any) => void;
+}
+
+const getTags = (issue: Types.Issue, issues: Types.Issue[]) => {
 	if (!issue.epicId) {
 		return [];
 	}
@@ -18,10 +26,10 @@ const getTags = (issue, issues) => {
 	}]
 }
 
-const getData = (issues) => {
+const getData = (issues: Types.Issue[]) => {
 	const cards = issues
-	.filter((issue) => issue.type !== 'Epic')
-	.map((issue) => {
+	.filter((issue: Types.Issue) => issue.type !== 'Epic')
+	.map((issue: Types.Issue) => {
 		const { id, title, description, ...rest } = issue;
 		const tags = getTags(issue, issues);
 		return {
@@ -45,7 +53,7 @@ const getData = (issues) => {
 	}
 }
 
-function Table(props) {
+function Table(props: Props) {
 	const data = getData(props.issues);
 	return (
 		<Board

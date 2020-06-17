@@ -16,11 +16,11 @@ export default function NewGame() {
 	const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 	const baseUrl = `${protocol}://${process.env.REACT_APP_BASE_URL}`;
 
-	const handleNameChange = (event) => {
+	const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPlayerName(event.target.value);
 	}
 
-	const uploadIssues = async (data) => {
+	const uploadIssues = async (data: string | ArrayBuffer) => {
 		await fetch(`${baseUrl}/api/games/${gameId}/issues`, {
 			method: 'PUT',
 			headers: {
@@ -30,13 +30,21 @@ export default function NewGame() {
 		});
 	};
 
-	const handleFileUpload = (event) => {
+	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files && event.target.files[0];
+		if (!file) {
+			return;
+		}
+
 		const fileReader = new FileReader();
 		fileReader.onload = (e) => {
-			uploadIssues(e.target.result);
+			if (e.target && e.target.result) {
+				uploadIssues(e.target.result);
+			}
 		}
-		setFileName(event.target.files[0].name);
-		fileReader.readAsText(event.target.files[0])
+
+		setFileName(file.name);
+		fileReader.readAsText(file)
 
 		if (!playerId) {
 			setPlayerId(defaultPlayerId);
