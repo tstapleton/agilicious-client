@@ -7,6 +7,12 @@ import fox from './icons/fox.svg';
 import hedgehog from './icons/hedgehog.svg';
 import rabbit from './icons/rabbit.svg';
 import squirrel from './icons/squirrel.svg';
+import * as Types from './types';
+
+interface Props {
+	activePlayerId: string;
+	players: Types.Player[];
+}
 
 const icons = [
 	bird,
@@ -18,7 +24,7 @@ const icons = [
 	squirrel
 ]
 
-export default function Players(props) {
+export default function Players(props: Props) {
 	return (
 		<div className="Players">
 			<header>Players</header>

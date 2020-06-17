@@ -13,7 +13,7 @@ export default function JoinGame() {
 	const [playerName, setPlayerName] = useLocalStorage('playerName', '');
 	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
 
-	const handleNameChange = (event) => {
+	const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		console.log(`handleChange ${event.target.value}`);
 		setPlayerName(event.target.value);
 

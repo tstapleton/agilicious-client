@@ -6,6 +6,7 @@ import Sidebar from './Sidebar';
 import Table from './Table';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
+import * as Types from './types';
 
 import './Game.css';
 
@@ -17,23 +18,23 @@ export default function Game() {
 	console.log(`gameId: ${gameId}`);
 
 	const protocol = process.env.NODE_ENV === 'production' ? 'wss' : 'ws';
-	const [socketUrl, setSocketUrl] = useState(`${protocol}://${process.env.REACT_APP_BASE_URL}`);
-	const [issues, setIssues] = useState([]);
+	const [socketUrl] = useState(`${protocol}://${process.env.REACT_APP_BASE_URL}`);
+	const [issues, setIssues] = useState<Types.Issue[]>([]);
 	const [players, setPlayers] = useState([]);
-	const [activePlayerId, setActivePlayerId] = useState();
+	const [activePlayerId, setActivePlayerId] = useState('');
 
 	const [modalIsOpen, setIsOpen] = useState(false);
-	const [modalIssue, setModalIssue] = useState();
+	const [modalIssue, setModalIssue] = useState<Types.Issue | undefined>();
 
 	const [playerId, setPlayerId] = useLocalStorage('playerId', defaultPlayerId);
-	const [playerName, setPlayerName] = useLocalStorage('playerName', '');
+	const [playerName] = useLocalStorage('playerName', '');
 
 	const joinGame = () => {
 		if (playerId) {
 			sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId, name: playerName });
 		}
 	}
-	const handleMessage = (event) => {
+	const handleMessage = (event: MessageEvent) => {
 		const { type, ...payload } = JSON.parse(event.data);
 		switch (type) {
 			case 'GAME_STATE':
@@ -77,7 +78,7 @@ export default function Game() {
 		}
 	}
 
-	const onCardMove = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
+	const onCardMove = (cardId: string, sourceLaneId: string, targetLaneId: string, position: number, cardDetails: any) => {
 		sendJsonMessage({
 			type: 'UPDATE_POINTS',
 			playerId,
@@ -87,7 +88,7 @@ export default function Game() {
 		})
 	}
 
-	const onCardClick = (cardId, metadata, laneId) => {
+	const onCardClick = (cardId: string, metadata: any, laneId: string) => {
 		sendJsonMessage({
 			type: 'OPEN_ISSUE',
 			playerId,
@@ -96,6 +97,9 @@ export default function Game() {
 		})
 	}
 	const onModalClose = () => {
+		if (!modalIssue) {
+			return;
+		}
 		sendJsonMessage({
 			type: 'CLOSE_ISSUE',
 			playerId,
@@ -120,12 +124,10 @@ export default function Game() {
 	}
 	const {
 		sendJsonMessage,
-		lastJsonMessage,
-		readyState,
 	} = useWebSocket(socketUrl, {
 		onOpen: joinGame,
 		onMessage: handleMessage,
-		shouldReconnect: (closeEvent) => true,
+		shouldReconnect: () => true,
 	});
 
 	if (!playerId || !playerName) {
