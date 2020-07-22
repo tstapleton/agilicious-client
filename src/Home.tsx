@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<div className="Home">
 			<img src={deer} alt="logo" />
-			<h1>Agilitious</h1>
+			<h1>Agilicious</h1>
 			<p>An expeditious and nutritious estimation game</p>
 			<Link to={`/games/new`}><button>Start a new game</button></Link>
 		</div>
