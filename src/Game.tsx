@@ -13,7 +13,8 @@ import './Game.css';
 Modal.setAppElement('#root');
 const defaultPlayerId = v4();
 
-export default function Game() {
+export default function Game(props) {
+	const { newGame } = props.location.state ? props.location.state : { newGame: undefined };
 	const { gameId } = useParams();
 	console.log(`gameId: ${gameId}`);
 
@@ -31,7 +32,12 @@ export default function Game() {
 
 	const joinGame = () => {
 		if (playerId) {
-			sendJsonMessage({ type: 'JOIN_GAME', gameId, playerId, name: playerName });
+			sendJsonMessage({ id: v4(), type: 'JOIN_GAME', gameId, playerId, name: playerName });
+		}
+	}
+	const createGame = () => {
+		if (playerId) {
+			sendJsonMessage({ id: v4(), type: 'CREATE_GAME', gameId, name: playerName, avatarSetId: '46efff1b-5ca2-57fc-8e98-f1bad529f45f' });
 		}
 	}
 	const handleMessage = (event: MessageEvent) => {
@@ -80,6 +86,7 @@ export default function Game() {
 
 	const onCardMove = (cardId: string, sourceLaneId: string, targetLaneId: string, position: number, cardDetails: any) => {
 		sendJsonMessage({
+			id: v4(),
 			type: 'UPDATE_POINTS',
 			playerId,
 			points: parseInt(targetLaneId, 10),
@@ -90,6 +97,7 @@ export default function Game() {
 
 	const onCardClick = (cardId: string, metadata: any, laneId: string) => {
 		sendJsonMessage({
+			id: v4(),
 			type: 'OPEN_ISSUE',
 			playerId,
 			issueId: cardId,
@@ -101,6 +109,7 @@ export default function Game() {
 			return;
 		}
 		sendJsonMessage({
+			id: v4(),
 			type: 'CLOSE_ISSUE',
 			playerId,
 			issueId: modalIssue.id,
@@ -110,6 +119,7 @@ export default function Game() {
 
 	const onMoveSave = () => {
 		sendJsonMessage({
+			id: v4(),
 			type: 'CONFIRM_MOVE',
 			playerId,
 			gameId,
@@ -117,6 +127,7 @@ export default function Game() {
 	}
 	const onMovePass = () => {
 		sendJsonMessage({
+			id: v4(),
 			type: 'NO_CHANGE',
 			playerId,
 			gameId,
@@ -125,7 +136,7 @@ export default function Game() {
 	const {
 		sendJsonMessage,
 	} = useWebSocket(socketUrl, {
-		onOpen: joinGame,
+		onOpen: newGame ? createGame : joinGame,
 		onMessage: handleMessage,
 		shouldReconnect: () => true,
 	});

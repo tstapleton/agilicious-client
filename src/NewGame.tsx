@@ -61,7 +61,12 @@ export default function NewGame() {
 				<input accept=".csv" className="custom-file-input" type="file" onChange={handleFileUpload} />
 				{fileName && <span className="file-upload-name">{fileName}</span>}
 			</form>
-			<Link to={`/games/${gameId}`}><button>Start a new game</button></Link>
+			<Link to={{
+				pathname: `/games/${gameId}`,
+				state: {
+					newGame: true
+				}
+			}}><button>Start a new game</button></Link>
 			<p>Share this game with your teammates:</p>
 			<p>{`${baseUrl}/games/${gameId}`}</p>
 		</div>

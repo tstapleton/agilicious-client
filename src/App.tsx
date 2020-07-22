@@ -16,8 +16,7 @@ function App() {
 				<Route path="/games/:gameId/join">
 					<JoinGame />
 				</Route>
-				<Route path="/games/:gameId">
-					<Game />
+				<Route path="/games/:gameId" component={Game} >
 				</Route>
 				<Route path="/">
 					<Home />
