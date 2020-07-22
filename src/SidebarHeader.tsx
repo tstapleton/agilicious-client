@@ -6,7 +6,7 @@ export default function SidebarHeader() {
 	return (
 		<div className="SidebarHeader">
 			<img src={deer} alt="logo" />
-			<h1>Agilitious</h1>
+			<h1>Agilicious</h1>
 		</div>
 	)
 };
