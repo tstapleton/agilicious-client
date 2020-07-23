@@ -1,8 +1,10 @@
 body {
-	overflow-y: hidden;
+	/* overflow-y: hidden; */
+	height: 100vh;
+	margin: 0;
 }
 
-.App {
+/* .App {
 	text-align: center;
 }
 
@@ -39,4 +41,4 @@ body {
 	to {
 		transform: rotate(360deg);
 	}
-}
+} */

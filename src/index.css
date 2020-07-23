@@ -28,15 +28,15 @@
 	--color-red-light: #ff3352;
 }
 
-body {
+/* body {
 	font-family: 'MuliRegular';
 	margin: 0;
 }
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
-}
-h1, h2, h3, h4, h5, h6 {
+} */
+/* h1, h2, h3, h4, h5, h6 {
 	font-family: 'TradeshiftDisplay';
 }
 button {
@@ -47,9 +47,9 @@ strong {
 }
 em {
 	font-family: 'MuliItalic';
-}
+} */
 
-@font-face {
+/* @font-face {
 	font-family: 'TradeshiftDisplay';
 	src: local('TradeshiftDisplay'), url('./fonts/Tradeshift-Display-Medium.woff2') format('woff2');
 }
@@ -64,7 +64,7 @@ em {
 @font-face {
 	font-family: 'MuliItalic';
 	src: local('MuliItalic'), url('./fonts/Muli-Italic.ttf') format('truetype');
-}
+} */
 
 /* fixes unable to drop some cards on some lanes */
 /* https://github.com/rcdexta/react-trello/issues/203#issuecomment-570900387 */
