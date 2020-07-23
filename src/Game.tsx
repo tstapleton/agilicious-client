@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, RouteComponentProps } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
 import Sidebar from './Sidebar';
 import Table from './Table';
@@ -10,11 +10,19 @@ import * as Types from './types';
 
 import './Game.css';
 
+interface RouteParams {
+	gameId: string;
+}
+interface RouteState {
+	newGame: boolean;
+}
+interface Props extends RouteComponentProps<RouteParams, any, RouteState> {}
+
 Modal.setAppElement('#root');
 const defaultPlayerId = v4();
 
-export default function Game(props) {
-	const { newGame } = props.location.state ? props.location.state : { newGame: undefined };
+export default function Game(props: Props) {
+	const { newGame = false } = props.location && props.location.state ? props.location.state : {};
 	const { gameId } = useParams();
 	console.log(`gameId: ${gameId}`);
 
