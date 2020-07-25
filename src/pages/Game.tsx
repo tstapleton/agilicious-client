@@ -151,15 +151,24 @@ export default function Game(props: Props) {
 			type: 'NO_CHANGE',
 			playerId,
 			gameId,
-		});
-	};
-	const { sendJsonMessage } = useWebSocket(socketUrl, {
+		})
+	}
+
+	// We want to avoid calling joinGame until the user has entered their name (otherwise a blank player is added)
+	// However react forces us to call useWebSocket: 
+	//   React Hook "useWebSocket" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+	// So we use this variable to bypass calling joinGame, before redirecting to the join game page
+	const redirectToJoinGame = !playerId || !playerName;
+
+	const {
+		sendJsonMessage,
+	} = useWebSocket(socketUrl, redirectToJoinGame ? {} : {
 		onOpen: newGame ? createGame : joinGame,
 		onMessage: handleMessage,
 		shouldReconnect: () => true,
 	});
 
-	if (!playerId || !playerName) {
+	if (redirectToJoinGame) {
 		return <Redirect to={`/games/${gameId}/join`} />;
 	}
 
