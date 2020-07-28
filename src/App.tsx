@@ -1,28 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Game from './Game';
-import JoinGame from './JoinGame';
-import NewGame from './NewGame';
-import './App.css';
+// import './App.css';
+import Router from './Router';
+import enTranslations from '@shopify/polaris/locales/en.json';
+import { AppProvider} from '@shopify/polaris';
+import { Link } from './components';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Switch>
-				<Route path="/games/new">
-					<NewGame />
-				</Route>
-				<Route path="/games/:gameId/join">
-					<JoinGame />
-				</Route>
-				<Route path="/games/:gameId" component={Game} >
-				</Route>
-				<Route path="/">
-					<Home />
-				</Route>
-			</Switch>
-		</BrowserRouter>
+		<AppProvider i18n={enTranslations} linkComponent={Link} features={{ newDesignLanguage: true }}>
+			<Router />
+		</AppProvider>
 	);
 }
 

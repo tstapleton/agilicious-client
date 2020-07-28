@@ -1,0 +1,11 @@
+.Logo {
+	text-align: center;
+	background: cyan;
+}
+.Logo img {
+	height: 120px;
+}
+.Logo h1 {
+	font-size: 36px;
+	margin: 0 auto 15px;
+}
