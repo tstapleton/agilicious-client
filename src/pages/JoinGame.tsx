@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
 import './JoinGame.css';
-import SidebarHeader from './SidebarHeader';
+import SidebarHeader from '../components/SidebarHeader';
 
 const defaultPlayerId = v4();
 

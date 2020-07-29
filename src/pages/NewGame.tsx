@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
 import './NewGame.css';
-import SidebarHeader from './SidebarHeader';
+import SidebarHeader from '../components/SidebarHeader';
 
 const gameId = v4();
 const defaultPlayerId = v4();

@@ -1,5 +1,5 @@
 import React from 'react';
-import deer from './icons/deer-black.svg';
+import deer from '../icons/deer-black.svg';
 import './SidebarHeader.css';
 
 export default function SidebarHeader() {

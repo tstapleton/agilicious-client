@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Game from './Game';
-import JoinGame from './JoinGame';
-import NewGame from './NewGame';
+import Home from './pages/Home';
+import Game from './pages/Game';
+import JoinGame from './pages/JoinGame';
+import NewGame from './pages/NewGame';
 
 export default function Router() {
 	return (

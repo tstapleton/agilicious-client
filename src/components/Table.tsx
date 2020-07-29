@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from 'react-trello';
-import * as Types from './types';
+import * as Types from '../types';
 
 import './Table.css';
 

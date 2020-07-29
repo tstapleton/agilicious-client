@@ -3,7 +3,7 @@ import SidebarHeader from './SidebarHeader';
 import Players from './Players';
 import GameActions from './GameActions';
 import './Sidebar.css';
-import * as Types from './types';
+import * as Types from '../types';
 
 interface Props {
 	players: Types.Player[];

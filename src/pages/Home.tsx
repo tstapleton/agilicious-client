@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import deer from './icons/deer-black.svg';
+import deer from '../icons/deer-black.svg';
 import './Home.css';
 
 export default function Home() {
