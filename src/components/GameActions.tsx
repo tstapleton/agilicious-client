@@ -3,7 +3,7 @@ import './GameActions.css';
 
 interface Props {
 	onMovePass: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-	onMoveSave: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+	onMoveSave: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export default function GameActions(props: Props) {

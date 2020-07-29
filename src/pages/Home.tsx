@@ -8,7 +8,9 @@ export default function Home() {
 		<Pane marginTop={majorScale(5)}>
 			<Logo variant="large" />
 			<Pane textAlign="center" marginTop={majorScale(2)}>
-				<Button is={Link} to={`/games/new`} appearance="primary">Start a new game</Button>
+				<Button is={Link} to={`/games/new`} appearance="primary">
+					Start a new game
+				</Button>
 			</Pane>
 		</Pane>
 	);

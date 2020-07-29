@@ -29,6 +29,7 @@
 	"scripts": {
 		"compile": "tsc",
 		"docz": "docz dev",
+		"format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,md}'",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
@@ -48,5 +49,20 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,css,md}": [
+			"prettier --write"
+		]
+	},
+	"devDependencies": {
+		"husky": "4.2.5",
+		"lint-staged": "10.2.11",
+		"prettier": "2.0.5"
 	}
 }

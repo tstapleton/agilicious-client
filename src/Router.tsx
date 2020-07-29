@@ -9,10 +9,10 @@ export default function Router() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route path='/games/new' component={NewGame} />
-				<Route path='/games/:gameId/join' component={JoinGame} />
-				<Route path='/games/:gameId' component={Game} />
-				<Route path='/' component={Home} />
+				<Route path="/games/new" component={NewGame} />
+				<Route path="/games/:gameId/join" component={JoinGame} />
+				<Route path="/games/:gameId" component={Game} />
+				<Route path="/" component={Home} />
 			</Switch>
 		</BrowserRouter>
 	);
