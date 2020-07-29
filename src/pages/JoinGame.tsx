@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
-import './JoinGame.css';
-import SidebarHeader from '../components/SidebarHeader';
+import { Button, TextInputField, Pane, majorScale } from 'evergreen-ui';
+import Logo from '../components/Logo';
 
 const defaultPlayerId = v4();
 
@@ -23,13 +23,21 @@ export default function JoinGame() {
 	}
 
 	return (
-		<div className="JoinGame">
-			<SidebarHeader />
-			<form>
-				<label>Player name</label>
-				<input onChange={handleNameChange} type="text" value={playerName} />
-			</form>
-			<Link to={`/games/${gameId}`}><button>Join game</button></Link>
-		</div>
+		<Pane marginTop={majorScale(2)} width={majorScale(80)} marginLeft="auto" marginRight="auto">
+			<Logo variant="small" />
+			<Pane marginTop={majorScale(6)} width={majorScale(50)} marginLeft="auto" marginRight="auto">
+				<TextInputField
+					label="Player name"
+					placeholder="Your name"
+					onChange={handleNameChange}
+					value={playerName} />
+			</Pane>
+			<Pane textAlign="center" marginTop={majorScale(4)}>
+				<Button
+					appearance="primary"
+					is={Link}
+					to={`/games/${gameId}`}>Join game</Button>
+			</Pane>
+		</Pane>
 	)
 }

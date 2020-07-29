@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
-import './NewGame.css';
-import SidebarHeader from '../components/SidebarHeader';
+import Logo from '../components/Logo';
+import { Button, Paragraph, TextInputField, Pane, majorScale, FilePicker, FormField } from 'evergreen-ui';
 
 const gameId = v4();
 const defaultPlayerId = v4();
@@ -52,23 +52,36 @@ export default function NewGame() {
 	};
 
 	return (
-		<div className="NewGame">
-			<SidebarHeader />
-			<form>
-				<label>Player name</label>
-				<input onChange={handleNameChange} type="text" value={playerName} />
-				<label>Upload Jira issues</label>
-				<input accept=".csv" className="custom-file-input" type="file" onChange={handleFileUpload} />
-				{fileName && <span className="file-upload-name">{fileName}</span>}
-			</form>
-			<Link to={{
-				pathname: `/games/${gameId}`,
-				state: {
-					newGame: true
-				}
-			}}><button>Start a new game</button></Link>
-			<p>Share this game with your teammates:</p>
-			<p>{`${baseUrl}/games/${gameId}`}</p>
-		</div>
+		<Pane marginTop={majorScale(2)} width={majorScale(80)} marginLeft="auto" marginRight="auto">
+			<Logo variant="small" />
+			<Pane marginTop={majorScale(6)} width={majorScale(50)} marginLeft="auto" marginRight="auto">
+				<TextInputField
+					label="Player name"
+					placeholder="Your name"
+					onChange={handleNameChange}
+					value={playerName} />
+				<FormField label="Jira issues">
+					<FilePicker
+						accept=".csv"
+						onChange={handleFileUpload}
+						placeholder="Upload export from Jira" />
+				</FormField>
+			</Pane>
+			<Pane textAlign="center" marginTop={majorScale(4)}>
+				<Button
+					appearance="primary"
+					is={Link}
+					to={{
+						pathname: `/games/${gameId}`,
+						state: {
+							newGame: true
+						}
+					}}>Start a new game</Button>
+			</Pane>
+			<Pane textAlign="center" marginTop={majorScale(10)}>
+				<Paragraph>Share this game with your teammates: </Paragraph>
+				<Paragraph>{`${baseUrl}/games/${gameId}`}</Paragraph>
+			</Pane>
+		</Pane>
 	)
 }
