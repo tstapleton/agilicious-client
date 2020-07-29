@@ -8,5 +8,5 @@ export default function SidebarHeader() {
 			<img src={deer} alt="logo" />
 			<h1>Agilicious</h1>
 		</div>
-	)
-};
+	);
+}

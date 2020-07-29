@@ -13,18 +13,20 @@ function LogoLarge() {
 			<Heading size={900}>agilicious</Heading>
 			<Text size={500}>a judicious and delicious estimation game</Text>
 		</Pane>
-	)
+	);
 }
 
 function LogoSmall() {
 	return (
 		<Pane display="flex" justifyContent="center">
 			<img src={deer} alt="logo" height={majorScale(4)} />
-			<Heading size={700} marginLeft={majorScale(1)}>agilicious</Heading>
+			<Heading size={700} marginLeft={majorScale(1)}>
+				agilicious
+			</Heading>
 		</Pane>
 	);
 }
 
 export default function Logo(props: Props) {
 	return props.variant === 'large' ? LogoLarge() : LogoSmall();
-};
+}

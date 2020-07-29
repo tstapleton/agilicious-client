@@ -14,26 +14,20 @@ interface Props {
 	players: Types.Player[];
 }
 
-const icons = [
-	bird,
-	birdTwo,
-	chicken,
-	fox,
-	hedgehog,
-	rabbit,
-	squirrel
-]
+const icons = [bird, birdTwo, chicken, fox, hedgehog, rabbit, squirrel];
 
 export default function Players(props: Props) {
 	return (
 		<div className="Players">
 			<header>Players</header>
 			{props.players.map((player, index) => (
-				<div className={`Player ${player.id === props.activePlayerId ? 'is-active' : ''}`} key={player.id}>
+				<div
+					className={`Player ${player.id === props.activePlayerId ? 'is-active' : ''}`}
+					key={player.id}>
 					<img src={icons[index]} alt="avatar" />
 					<span>{player.name}</span>
 				</div>
 			))}
 		</div>
-	)
+	);
 }

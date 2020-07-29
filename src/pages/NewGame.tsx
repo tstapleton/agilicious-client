@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
 import Logo from '../components/Logo';
-import { Button, Paragraph, TextInputField, Pane, majorScale, FilePicker, FormField } from 'evergreen-ui';
+import {
+	Button,
+	Paragraph,
+	TextInputField,
+	Pane,
+	majorScale,
+	FilePicker,
+	FormField,
+} from 'evergreen-ui';
 
 const gameId = v4();
 const defaultPlayerId = v4();
@@ -18,15 +26,15 @@ export default function NewGame() {
 
 	const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPlayerName(event.target.value);
-	}
+	};
 
 	const uploadIssues = async (data: string | ArrayBuffer) => {
 		await fetch(`${baseUrl}/api/games/${gameId}/issues`, {
 			method: 'PUT',
 			headers: {
-				'content-type': 'text/plain'
+				'content-type': 'text/plain',
 			},
-			body: data
+			body: data,
 		});
 	};
 
@@ -41,10 +49,10 @@ export default function NewGame() {
 			if (e.target && e.target.result) {
 				uploadIssues(e.target.result);
 			}
-		}
+		};
 
 		setFileName(file.name);
-		fileReader.readAsText(file)
+		fileReader.readAsText(file);
 
 		if (!playerId) {
 			setPlayerId(defaultPlayerId);
@@ -59,12 +67,14 @@ export default function NewGame() {
 					label="Player name"
 					placeholder="Your name"
 					onChange={handleNameChange}
-					value={playerName} />
+					value={playerName}
+				/>
 				<FormField label="Jira issues">
 					<FilePicker
 						accept=".csv"
 						onChange={handleFileUpload}
-						placeholder="Upload export from Jira" />
+						placeholder="Upload export from Jira"
+					/>
 				</FormField>
 			</Pane>
 			<Pane textAlign="center" marginTop={majorScale(4)}>
@@ -74,14 +84,16 @@ export default function NewGame() {
 					to={{
 						pathname: `/games/${gameId}`,
 						state: {
-							newGame: true
-						}
-					}}>Start a new game</Button>
+							newGame: true,
+						},
+					}}>
+					Start a new game
+				</Button>
 			</Pane>
 			<Pane textAlign="center" marginTop={majorScale(10)}>
 				<Paragraph>Share this game with your teammates: </Paragraph>
 				<Paragraph>{`${baseUrl}/games/${gameId}`}</Paragraph>
 			</Pane>
 		</Pane>
-	)
+	);
 }

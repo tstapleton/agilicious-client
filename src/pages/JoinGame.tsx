@@ -20,7 +20,7 @@ export default function JoinGame() {
 		if (!playerId) {
 			setPlayerId(defaultPlayerId);
 		}
-	}
+	};
 
 	return (
 		<Pane marginTop={majorScale(2)} width={majorScale(80)} marginLeft="auto" marginRight="auto">
@@ -30,14 +30,14 @@ export default function JoinGame() {
 					label="Player name"
 					placeholder="Your name"
 					onChange={handleNameChange}
-					value={playerName} />
+					value={playerName}
+				/>
 			</Pane>
 			<Pane textAlign="center" marginTop={majorScale(4)}>
-				<Button
-					appearance="primary"
-					is={Link}
-					to={`/games/${gameId}`}>Join game</Button>
+				<Button appearance="primary" is={Link} to={`/games/${gameId}`}>
+					Join game
+				</Button>
 			</Pane>
 		</Pane>
-	)
+	);
 }

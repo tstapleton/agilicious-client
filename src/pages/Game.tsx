@@ -42,12 +42,18 @@ export default function Game(props: Props) {
 		if (playerId) {
 			sendJsonMessage({ id: v4(), type: 'JOIN_GAME', gameId, playerId, name: playerName });
 		}
-	}
+	};
 	const createGame = () => {
 		if (playerId) {
-			sendJsonMessage({ id: v4(), type: 'CREATE_GAME', gameId, name: playerName, avatarSetId: '46efff1b-5ca2-57fc-8e98-f1bad529f45f' });
+			sendJsonMessage({
+				id: v4(),
+				type: 'CREATE_GAME',
+				gameId,
+				name: playerName,
+				avatarSetId: '46efff1b-5ca2-57fc-8e98-f1bad529f45f',
+			});
 		}
-	}
+	};
 	const handleMessage = (event: MessageEvent) => {
 		const { type, ...payload } = JSON.parse(event.data);
 		switch (type) {
@@ -58,14 +64,14 @@ export default function Game(props: Props) {
 				setIssues(payload.issues);
 				break;
 			case 'UPDATED_POINTS': {
-				const updatedIssues = issues.map(issue =>
+				const updatedIssues = issues.map((issue) =>
 					issue.id === payload.issue.id ? payload.issue : issue
-				)
+				);
 				setIssues(updatedIssues);
 				break;
 			}
 			case 'ISSUE_OPENED': {
-				const issue = issues.find(i => i.id === payload.issueId);
+				const issue = issues.find((i) => i.id === payload.issueId);
 				setIsOpen(true);
 				setModalIssue(issue);
 				break;
@@ -76,7 +82,7 @@ export default function Game(props: Props) {
 				break;
 			}
 			case 'PLAYER_ADDED': {
-				setPlayers(payload.players)
+				setPlayers(payload.players);
 				break;
 			}
 			case 'MOVE_CONFIRMED': {
@@ -90,9 +96,15 @@ export default function Game(props: Props) {
 			default:
 				return;
 		}
-	}
+	};
 
-	const onCardMove = (cardId: string, sourceLaneId: string, targetLaneId: string, position: number, cardDetails: any) => {
+	const onCardMove = (
+		cardId: string,
+		sourceLaneId: string,
+		targetLaneId: string,
+		position: number,
+		cardDetails: any
+	) => {
 		sendJsonMessage({
 			id: v4(),
 			type: 'UPDATE_POINTS',
@@ -100,8 +112,8 @@ export default function Game(props: Props) {
 			points: parseInt(targetLaneId, 10),
 			issueId: cardId,
 			gameId,
-		})
-	}
+		});
+	};
 
 	const onCardClick = (cardId: string, metadata: any, laneId: string) => {
 		sendJsonMessage({
@@ -110,8 +122,8 @@ export default function Game(props: Props) {
 			playerId,
 			issueId: cardId,
 			gameId,
-		})
-	}
+		});
+	};
 	const onModalClose = () => {
 		if (!modalIssue) {
 			return;
@@ -122,8 +134,8 @@ export default function Game(props: Props) {
 			playerId,
 			issueId: modalIssue.id,
 			gameId,
-		})
-	}
+		});
+	};
 
 	const onMoveSave = () => {
 		sendJsonMessage({
@@ -132,18 +144,16 @@ export default function Game(props: Props) {
 			playerId,
 			gameId,
 		});
-	}
+	};
 	const onMovePass = () => {
 		sendJsonMessage({
 			id: v4(),
 			type: 'NO_CHANGE',
 			playerId,
 			gameId,
-		})
-	}
-	const {
-		sendJsonMessage,
-	} = useWebSocket(socketUrl, {
+		});
+	};
+	const { sendJsonMessage } = useWebSocket(socketUrl, {
 		onOpen: newGame ? createGame : joinGame,
 		onMessage: handleMessage,
 		shouldReconnect: () => true,
@@ -161,19 +171,19 @@ export default function Game(props: Props) {
 					currentPlayerId={playerId}
 					onMovePass={onMovePass}
 					onMoveSave={onMoveSave}
-					players={players} />
+					players={players}
+				/>
 			</div>
 			<div className="game-table">
 				<Table
 					isMoveAllowed={playerId === activePlayerId}
 					onCardClick={onCardClick}
 					onCardMove={onCardMove}
-					issues={issues} />
+					issues={issues}
+				/>
 			</div>
-			<Modal
-				isOpen={modalIsOpen}
-				onRequestClose={onModalClose}>
-					<h1>Hello from modal {modalIssue && modalIssue.title}</h1>
+			<Modal isOpen={modalIsOpen} onRequestClose={onModalClose}>
+				<h1>Hello from modal {modalIssue && modalIssue.title}</h1>
 			</Modal>
 		</div>
 	);
