@@ -6,7 +6,7 @@ import JoinGame from './JoinGame';
 import NewGame from './NewGame';
 import './App.css';
 
-function App() {
+export default function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
@@ -25,5 +25,3 @@ function App() {
 		</BrowserRouter>
 	);
 }
-
-export default App;
