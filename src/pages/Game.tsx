@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Redirect, useParams, RouteComponentProps } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
-import Sidebar from './Sidebar';
-import Table from './Table';
+import Sidebar from '../components/Sidebar';
+import Table from '../components/Table';
 import useLocalStorage from 'react-use-localstorage';
 import { v4 } from 'uuid';
-import * as Types from './types';
+import * as Types from '../types';
 
 import './Game.css';
 

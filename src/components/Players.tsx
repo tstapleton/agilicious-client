@@ -1,13 +1,13 @@
 import React from 'react';
 import './Players.css';
-import bird from './icons/bird.svg';
-import birdTwo from './icons/bird-2.svg';
-import chicken from './icons/chicken.svg';
-import fox from './icons/fox.svg';
-import hedgehog from './icons/hedgehog.svg';
-import rabbit from './icons/rabbit.svg';
-import squirrel from './icons/squirrel.svg';
-import * as Types from './types';
+import bird from '../icons/bird.svg';
+import birdTwo from '../icons/bird-2.svg';
+import chicken from '../icons/chicken.svg';
+import fox from '../icons/fox.svg';
+import hedgehog from '../icons/hedgehog.svg';
+import rabbit from '../icons/rabbit.svg';
+import squirrel from '../icons/squirrel.svg';
+import * as Types from '../types';
 
 interface Props {
 	activePlayerId: string;
