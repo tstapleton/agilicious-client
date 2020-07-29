@@ -14,6 +14,7 @@
 		"@types/react-router-dom": "^5.1.5",
 		"@types/uuid": "8.0.0",
 		"docz": "2.3.1",
+		"evergreen-ui": "4.29.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-modal": "^3.11.2",
