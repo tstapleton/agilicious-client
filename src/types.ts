@@ -12,3 +12,12 @@ export interface Player {
 	id: string;
 	name: string;
 }
+
+export interface Card {
+	description: string;
+	epic: string;
+	estimate: number;
+	issueKey: string;
+	title: string;
+	type: 'bug' | 'story' | 'epic' | 'task';
+}
