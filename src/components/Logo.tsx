@@ -11,7 +11,7 @@ function LogoLarge() {
 		<Pane textAlign="center">
 			<img src={deer} alt="logo" height={majorScale(16)} />
 			<Heading size={900}>agilicious</Heading>
-			<Text size={500}>a judicious and delicious estimation game</Text>
+			<Text size={500}>a judicious and delicious story estimation game</Text>
 		</Pane>
 	);
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import Logo from './Logo';
 import Players from './Players';
 import GameActions from './GameActions';
-import './Sidebar.css';
 import * as Types from '../types';
+import { Pane, majorScale } from 'evergreen-ui';
 
 interface Props {
 	players: Types.Player[];
@@ -15,18 +15,28 @@ interface Props {
 
 export default function Sidebar(props: Props) {
 	return (
-		<div className="Sidebar">
-			<header className="sidebar-header">
+		<Pane flexDirection="column" background="green" height="100vh" display="flex">
+			<Pane
+				height={majorScale(6)}
+				background="purple"
+				alignItems="center"
+				display="flex"
+				justifyContent="center">
 				<Logo variant="small" />
-			</header>
-			<div className="sidebar-main">
+			</Pane>
+			<Pane flexGrow="1">
 				<Players players={props.players} activePlayerId={props.activePlayerId} />
-			</div>
-			<footer className="sidebar-footer">
+			</Pane>
+			<Pane
+				height={majorScale(6)}
+				background="blue"
+				alignItems="center"
+				display="flex"
+				justifyContent="center">
 				{props.currentPlayerId === props.activePlayerId && (
 					<GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />
 				)}
-			</footer>
-		</div>
+			</Pane>
+		</Pane>
 	);
 }

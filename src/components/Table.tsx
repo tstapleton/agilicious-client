@@ -70,13 +70,14 @@ const getData = (issues: Types.Issue[]) => {
 function Table(props: Props) {
 	const data = getData(props.issues);
 	return (
-		<Board
-			data={data}
-			cardDraggable={props.isMoveAllowed}
-			hideCardDeleteIcon={true}
-			handleDragEnd={props.onCardMove}
-			onCardClick={props.onCardClick}
-		/>
+		<h1>Table</h1>
+		// <Board
+		// 	data={data}
+		// 	cardDraggable={props.isMoveAllowed}
+		// 	hideCardDeleteIcon={true}
+		// 	handleDragEnd={props.onCardMove}
+		// 	onCardClick={props.onCardClick}
+		// />
 	);
 }
 

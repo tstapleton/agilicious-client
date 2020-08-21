@@ -7,5 +7,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 $ NODE_ENV=production REACT_APP_BASE_URL=www.agilicious.app npm run build
 
 # local development
-$ REACT_APP_BASE_URL=localhost:8000 npm start
+$ REACT_APP_BASE_URL=localhost:8000 npm run dev
 ```
