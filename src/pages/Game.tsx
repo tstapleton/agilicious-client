@@ -216,7 +216,7 @@ export default function Game() {
 					/>
 				</Route>
 				<Route path={`${path}/play`}>
-					{allowPlayGame && onJoinGame() ? (
+					{allowPlayGame ? (
 						<PlayGame
 							activePlayerId={activePlayerId}
 							issues={issues}
