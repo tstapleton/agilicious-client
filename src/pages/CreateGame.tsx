@@ -13,7 +13,7 @@ import Logo from '../components/Logo';
 interface Props {
 	gameUrl: string;
 	onFileUpload: (files: FileList) => void;
-	onPlayGame: () => void;
+	onCreateGame: () => void;
 	onPlayerNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	playerName: string;
 }
@@ -38,7 +38,7 @@ export default function CreateGame(props: Props) {
 				</FormField>
 			</Pane>
 			<Pane textAlign="center" marginTop={majorScale(4)}>
-				<Button appearance="primary" onClick={props.onPlayGame}>
+				<Button appearance="primary" onClick={props.onCreateGame}>
 					Start a new game
 				</Button>
 			</Pane>

@@ -3,7 +3,7 @@ import { Button, TextInputField, Pane, majorScale } from 'evergreen-ui';
 import Logo from '../components/Logo';
 
 interface Props {
-	onPlayGame: () => void;
+	onJoinGame: () => void;
 	onPlayerNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	playerName: string;
 }
@@ -21,7 +21,7 @@ export default function JoinGame(props: Props) {
 				/>
 			</Pane>
 			<Pane textAlign="center" marginTop={majorScale(4)}>
-				<Button appearance="primary" onClick={props.onPlayGame}>
+				<Button appearance="primary" onClick={props.onJoinGame}>
 					Join game
 				</Button>
 			</Pane>
