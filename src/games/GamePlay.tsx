@@ -57,3 +57,29 @@ export default function GamePlay() {
 		// </div>
 	);
 }
+
+// interface Props {
+// 	activePlayerId: string;
+// 	issues: Types.Issue[];
+// 	playerId: string;
+// 	players: Types.Player[];
+
+// 	onJoinGame: () => void;
+
+// 	onCardClick: (cardId: string, metadata: any, laneId: string) => void;
+// 	onCardMove: (
+// 		cardId: string,
+// 		sourceLaneId: string,
+// 		targetLaneId: string,
+// 		position: number,
+// 		cardDetails: any
+// 	) => void;
+// 	onMovePass: () => void;
+// 	onMoveSave: () => void;
+
+// 	modalIssue?: Types.Issue;
+// 	modalIsOpen: boolean;
+// 	onModalClose: () => void;
+// }
+
+// Modal.setAppElement('#root');

@@ -16,6 +16,9 @@ const toServerAction = (data: any) => {
 	};
 };
 
+// TODO: rename, remove logging
+// TODO: handle reconnecting
+
 export const logger = (store: MiddlewareAPI) => (next: any) => (action: any) => {
 	switch (action.type) {
 		case Types.WEBSOCKET_CONNECT:

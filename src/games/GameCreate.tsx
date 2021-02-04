@@ -21,3 +21,27 @@ export default function GameCreate() {
 
 	return <GameCreateForm gameId={gameId} onSubmit={handleSubmit} playerName={name} />;
 }
+
+// const uploadIssues = async (gameId: string, data: string | ArrayBuffer) => {
+// 	await fetch(`/api/games/${gameId}/issues`, {
+// 		method: 'PUT',
+// 		headers: {
+// 			'content-type': 'text/plain',
+// 		},
+// 		body: data,
+// 	});
+// };
+// const handleFileUpload = (files: FileList) => {
+// 	const file = files && files[0];
+// 	if (!file) {
+// 		return;
+// 	}
+
+// 	const fileReader = new FileReader();
+// 	fileReader.onload = (e) => {
+// 		if (e.target && e.target.result) {
+// 			uploadIssues(gameId, e.target.result);
+// 		}
+// 	};
+// 	fileReader.readAsText(file);
+// };
