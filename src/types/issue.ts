@@ -17,3 +17,9 @@ export interface Issue {
 	title: string;
 	type: string;
 }
+
+export type IssuesById = Record<IssueId, Issue>;
+
+export interface IssuesState {
+	byId: IssuesById;
+}

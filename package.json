@@ -34,10 +34,10 @@
 	},
 	"scripts": {
 		"compile": "tsc",
-		"dev": "react-scripts start",
+		"dev": "PORT=3001 REACT_APP_BASE_URL=localhost:8000 react-scripts start",
 		"docz": "docz dev",
 		"format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,md}'",
-		"start": "",
+		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
