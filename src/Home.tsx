@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Pane, majorScale } from 'evergreen-ui';
 import { v4 } from 'uuid';
-import Logo from '../components/Logo';
+import Logo from './components/Logo';
 
 const gameId = v4();
 

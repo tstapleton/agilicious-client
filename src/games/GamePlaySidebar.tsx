@@ -1,16 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Sidebar from '../components/Sidebar';
-import * as Types from '../types';
+import { selectActivePlayerId, selectCurrentPlayer, selectPlayers } from '../players/selectors';
 
 export default function GamePlaySidebar() {
 	console.log('GamePlaySidebar');
 
-	const selectPlayerId = (state: Types.RootState) => state.players.playerId;
-	const selectActivePlayerId = (state: Types.RootState) => state.players.activePlayerId;
-	const selectPlayers = (state: Types.RootState) => state.players.players;
-
-	const playerId = useSelector(selectPlayerId);
+	const player = useSelector(selectCurrentPlayer);
 	// TODO: don't force typescript to think this is defined
 	const activePlayerId = useSelector(selectActivePlayerId)!;
 	const players = useSelector(selectPlayers);
@@ -21,7 +17,7 @@ export default function GamePlaySidebar() {
 	return (
 		<Sidebar
 			activePlayerId={activePlayerId}
-			currentPlayerId={playerId}
+			currentPlayerId={player.playerId}
 			onMovePass={handleMovePass}
 			onMoveSave={handleMoveSave}
 			players={players}

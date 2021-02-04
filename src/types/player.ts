@@ -3,7 +3,6 @@ import { UUID } from './common';
 export type AvatarId = UUID;
 export type PlayerId = UUID;
 export type PlayerName = string;
-// export type Players = Players[];
 
 export interface Player {
 	avatarId: AvatarId;
@@ -12,9 +11,14 @@ export interface Player {
 	name: PlayerName;
 }
 
+export interface CurrentPlayer {
+	playerId: PlayerId;
+	name: PlayerName;
+}
+
 export interface PlayersState {
 	activePlayerId?: PlayerId;
+	currentPlayer: CurrentPlayer;
 	gameOwnerId?: PlayerId;
-	playerId: PlayerId;
 	players: Array<Player>;
 }

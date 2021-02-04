@@ -25,7 +25,7 @@ export default function configureStore() {
 		// TODO: throttle
 		saveState({
 			players: {
-				playerId: store.getState().players.playerId,
+				currentPlayer: store.getState().players.currentPlayer,
 				players: [],
 			},
 		});

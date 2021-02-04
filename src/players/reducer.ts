@@ -2,22 +2,35 @@ import { v4 } from 'uuid';
 import * as Types from '../types';
 
 const initialState: Types.PlayersState = {
-	playerId: v4(),
+	currentPlayer: {
+		playerId: v4(),
+		name: '',
+	},
 	players: [],
 };
 
 export function playersReducer(
 	state = initialState,
-	action: Types.ServerEventActionTypes
+	action: Types.EventActionTypes
 ): Types.PlayersState {
 	switch (action.type) {
+		case Types.CLIENT_EVENT_CREATE_GAME:
+		case Types.CLIENT_EVENT_JOIN_GAME: {
+			const { playerId, name } = action.payload;
+			return {
+				...state,
+				currentPlayer: {
+					name,
+					playerId,
+				},
+			};
+		}
 		case Types.SERVER_EVENT_GAME_STATE: {
-			const { activePlayerId, gameOwnerId, playerId, players } = action.payload;
+			const { activePlayerId, gameOwnerId, players } = action.payload;
 			return {
 				...state,
 				activePlayerId,
 				gameOwnerId,
-				playerId,
 				players,
 			};
 		}

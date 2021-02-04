@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 // import Sidebar from '../components/Sidebar';
 // import Table from '../components/Table';
 import GamePlaySidebar from './GamePlaySidebar';
+import { selectCurrentPlayer, selectIsConnected } from '../players/selectors';
 import { joinGame } from '../games/actions';
 import * as Types from '../types';
 
@@ -13,26 +14,17 @@ export default function GamePlay() {
 
 	const { gameId } = useParams<{ gameId: Types.GameId }>();
 
-	const selectPlayerId = (state: Types.RootState) => state.players.playerId;
-	const playerId = useSelector(selectPlayerId);
-
-	const selectIsConnected = (state: Types.RootState) => {
-		const player = state.players.players.find(
-			(player: Types.Player) => player.id === state.players.playerId
-		);
-		if (!player) {
-			return false;
-		}
-		return player.connected;
-	};
-	const isConnected = useSelector(selectIsConnected);
+	const player = useSelector(selectCurrentPlayer);
+	const isConnected = useSelector((state: Types.RootState) =>
+		selectIsConnected(state, player.playerId)
+	);
 
 	const dispatch = useDispatch();
 	// TODO: error about websocket not connected yet, so quick "fix" here
 	setTimeout(() => {
 		if (!isConnected) {
 			console.log('Not connected, joining game...');
-			dispatch(joinGame(gameId, playerId, 'hello'));
+			dispatch(joinGame(gameId, player.playerId, player.name));
 		}
 	}, 1000);
 

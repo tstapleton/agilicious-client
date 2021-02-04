@@ -3,8 +3,8 @@ import { Route, Switch, useHistory, useParams, useRouteMatch, Redirect } from 'r
 import useLocalStorage from 'react-use-localstorage';
 import useWebSocket from 'react-use-websocket';
 import { v4 } from 'uuid';
-import CreateGame from './CreateGame';
-import JoinGame from './JoinGame';
+// import CreateGame from './CreateGame';
+// import JoinGame from './JoinGame';
 import * as Types from '../types';
 import PlayGame from './PlayGame';
 
@@ -199,7 +199,7 @@ export default function Game() {
 			<h1>Game</h1>
 
 			<Switch>
-				<Route path={`${path}/create`}>
+				{/* <Route path={`${path}/create`}>
 					<CreateGame
 						gameUrl={gameUrl}
 						onFileUpload={handleFileUpload}
@@ -207,14 +207,14 @@ export default function Game() {
 						onPlayerNameChange={handlePlayerNameChange}
 						playerName={playerName}
 					/>
-				</Route>
-				<Route path={`${path}/join`}>
+				</Route> */}
+				{/* <Route path={`${path}/join`}>
 					<JoinGame
 						onJoinGame={handleJoinGame}
 						onPlayerNameChange={handlePlayerNameChange}
 						playerName={playerName}
 					/>
-				</Route>
+				</Route> */}
 				<Route path={`${path}/play`}>
 					{allowPlayGame ? (
 						<PlayGame
