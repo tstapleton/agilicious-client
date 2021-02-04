@@ -11,7 +11,7 @@ export function playersReducer(
 	action: Types.ServerEventActionTypes
 ): Types.PlayersState {
 	switch (action.type) {
-		case Types.SERVER_EVENT_GAME_STATE:
+		case Types.SERVER_EVENT_GAME_STATE: {
 			const { activePlayerId, gameOwnerId, playerId, players } = action.payload;
 			return {
 				...state,
@@ -20,6 +20,29 @@ export function playersReducer(
 				playerId,
 				players,
 			};
+		}
+		case Types.SERVER_EVENT_PLAYER_ADDED: {
+			const { players } = action.payload;
+			return {
+				...state,
+				players,
+			};
+		}
+		case Types.SERVER_EVENT_PLAYER_DISCONNECTED: {
+			const { eventByPlayerId } = action.payload;
+			return {
+				...state,
+				players: state.players.map((player: Types.Player) => {
+					if (player.id === eventByPlayerId) {
+						return {
+							...player,
+							connected: false,
+						};
+					}
+					return player;
+				}),
+			};
+		}
 		default:
 			return state;
 	}
