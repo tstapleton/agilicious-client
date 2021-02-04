@@ -15,6 +15,6 @@ export interface Player {
 export interface PlayersState {
 	activePlayerId?: PlayerId;
 	gameOwnerId?: PlayerId;
-	playerId?: PlayerId;
+	playerId: PlayerId;
 	players: Array<Player>;
 }

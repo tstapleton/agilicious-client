@@ -1,6 +1,8 @@
+import { v4 } from 'uuid';
 import * as Types from '../types';
 
 const initialState: Types.PlayersState = {
+	playerId: v4(),
 	players: [],
 };
 

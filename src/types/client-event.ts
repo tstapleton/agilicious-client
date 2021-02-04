@@ -1,11 +1,12 @@
 import { AvatarSetId, GameId } from './game';
-import { PlayerName } from './player';
+import { PlayerId, PlayerName } from './player';
 
 export const CLIENT_EVENT_CREATE_GAME = 'CLIENT_EVENT::CREATE_GAME';
 
 export interface GameCreate {
 	avatarSetId: AvatarSetId;
 	gameId: GameId;
+	playerId: PlayerId;
 	name: PlayerName;
 }
 
