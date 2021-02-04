@@ -12,6 +12,7 @@ const render = () => {
 
 	ReactDOM.render(
 		<Provider store={store}>
+			{/* strict mode causes double rendering - double events to be dispatched */}
 			<React.StrictMode>
 				<App />
 			</React.StrictMode>

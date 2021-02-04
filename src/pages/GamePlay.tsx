@@ -16,11 +16,25 @@ export default function GamePlay() {
 	const selectPlayerId = (state: Types.RootState) => state.players.playerId;
 	const playerId = useSelector(selectPlayerId);
 
+	const selectIsConnected = (state: Types.RootState) => {
+		const player = state.players.players.find(
+			(player: Types.Player) => player.id === state.players.playerId
+		);
+		if (!player) {
+			return false;
+		}
+		return player.connected;
+	};
+	const isConnected = useSelector(selectIsConnected);
+
 	const dispatch = useDispatch();
 	// TODO: error about websocket not connected yet, so quick "fix" here
 	setTimeout(() => {
-		dispatch(joinGame(gameId, playerId, 'hello'));
-	}, 2000);
+		if (!isConnected) {
+			console.log('Not connected, joining game...');
+			dispatch(joinGame(gameId, playerId, 'hello'));
+		}
+	}, 1000);
 
 	return (
 		<>

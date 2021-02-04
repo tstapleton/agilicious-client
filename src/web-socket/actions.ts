@@ -8,3 +8,10 @@ export function connectToServer(url: string): Types.WebSocketActionTypes {
 		},
 	};
 }
+
+export function websocketOpened(): Types.WebSocketActionTypes {
+	return {
+		type: Types.WEBSOCKET_OPENED,
+		payload: {},
+	};
+}
