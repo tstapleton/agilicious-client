@@ -15,3 +15,18 @@ export function createGame(
 		},
 	};
 }
+
+export function joinGame(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId,
+	name: Types.PlayerName
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_JOIN_GAME,
+		payload: {
+			gameId,
+			playerId,
+			name,
+		},
+	};
+}
