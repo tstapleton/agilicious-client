@@ -1,5 +1,5 @@
 import React from 'react';
-import Board from 'react-trello';
+// import Board from 'react-trello';
 import * as Types from '../types';
 
 import './Table.css';
@@ -69,6 +69,7 @@ const getData = (issues: Types.Issue[]) => {
 
 function Table(props: Props) {
 	const data = getData(props.issues);
+	console.log(data);
 	return (
 		<h1>Table</h1>
 		// <Board
