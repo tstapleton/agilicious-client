@@ -18,6 +18,9 @@ const toServerAction = (data: any) => {
 
 // TODO: rename, remove logging
 // TODO: handle reconnecting
+// https://www.pluralsight.com/guides/using-web-sockets-in-your-reactredux-app
+// https://dev.to/aduranil/how-to-use-websockets-with-redux-a-step-by-step-guide-to-writing-understanding-connecting-socket-middleware-to-your-project-km3
+// https://github.com/giantmachines/redux-websocket
 
 export const logger = (store: MiddlewareAPI) => (next: any) => (action: any) => {
 	switch (action.type) {

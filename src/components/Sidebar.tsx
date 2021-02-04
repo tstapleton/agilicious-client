@@ -15,24 +15,20 @@ interface Props {
 
 export default function Sidebar(props: Props) {
 	return (
-		<Pane flexDirection="column" background="green" height="100vh" display="flex">
-			<Pane
-				height={majorScale(6)}
-				background="purple"
-				alignItems="center"
-				display="flex"
-				justifyContent="center">
+		<Pane
+			flexDirection="column"
+			background="tint2"
+			height="100vh"
+			width={majorScale(34)}
+			display="flex"
+			padding={majorScale(1)}>
+			<Pane height={majorScale(6)} alignItems="center" display="flex" justifyContent="center">
 				<Logo variant="small" />
 			</Pane>
-			<Pane flexGrow="1">
+			<Pane flexGrow={1}>
 				<Players players={props.players} activePlayerId={props.activePlayerId} />
 			</Pane>
-			<Pane
-				height={majorScale(6)}
-				background="blue"
-				alignItems="center"
-				display="flex"
-				justifyContent="center">
+			<Pane height={majorScale(6)} alignItems="center" display="flex" justifyContent="center">
 				{props.currentPlayerId === props.activePlayerId && (
 					<GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />
 				)}

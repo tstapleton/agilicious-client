@@ -8,6 +8,7 @@ import GamePlaySidebar from './GamePlaySidebar';
 import { selectCurrentPlayer, selectIsConnected } from '../players/selectors';
 import { joinGame } from '../games/actions';
 import * as Types from '../types';
+import { Pane } from 'evergreen-ui';
 
 export default function GamePlay() {
 	console.log('GamePlay');
@@ -29,10 +30,17 @@ export default function GamePlay() {
 	}, 1000);
 
 	return (
-		<>
-			<h1>Game Play</h1>
+		<Pane display="flex">
 			<GamePlaySidebar />
-		</>
+			<Pane
+				height={120}
+				width={240}
+				display="flex"
+				flexGrow={1}
+				alignItems="center"
+				justifyContent="center"
+				border="default"></Pane>
+		</Pane>
 		// <div className="Game">
 		// 	<div className="game-sidebar">
 		// 		<Sidebar
