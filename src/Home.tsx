@@ -1,15 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import deer from './icons/deer-black.svg';
-import './Home.css';
+import { Button, Pane, majorScale } from 'evergreen-ui';
+import { v4 } from 'uuid';
+import Logo from './components/Logo';
+
+const gameId = v4();
 
 export default function Home() {
 	return (
-		<div className="Home">
-			<img src={deer} alt="logo" />
-			<h1>Agilicious</h1>
-			<p>A judicious and delicious story estimation game</p>
-			<Link to={`/games/new`}><button>Start a new game</button></Link>
-		</div>
+		<Pane marginTop={majorScale(5)}>
+			<Logo variant="large" />
+			<Pane textAlign="center" marginTop={majorScale(2)}>
+				<Button is={Link} to={`/games/${gameId}/create`} appearance="primary">
+					Start a new game
+				</Button>
+			</Pane>
+		</Pane>
 	);
 }
