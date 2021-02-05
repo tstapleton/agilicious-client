@@ -13,8 +13,8 @@ export default function GameCreate() {
 
 	const { playerId, name } = useSelector(selectCurrentPlayer);
 
-	const handleSubmit = (playerName: Types.PlayerName) => {
-		dispatch(createGame(gameId, playerId, playerName));
+	const handleSubmit = (playerName: Types.PlayerName, avatarSetId: Types.AvatarSetId) => {
+		dispatch(createGame(gameId, playerId, playerName, avatarSetId));
 		history.push(`/games/${gameId}/play`);
 	};
 
