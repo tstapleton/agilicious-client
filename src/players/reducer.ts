@@ -56,7 +56,8 @@ export function playersReducer(
 				}),
 			};
 		}
-		case Types.SERVER_EVENT_PLAYER_SKIPPED: {
+		case Types.SERVER_EVENT_PLAYER_SKIPPED:
+		case Types.SERVER_EVENT_PLAYER_MOVED: {
 			const { activePlayerId } = action.payload;
 			return {
 				...state,

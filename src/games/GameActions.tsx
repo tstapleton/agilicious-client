@@ -8,19 +8,22 @@ interface Props {
 
 export default function GameActions(props: Props) {
 	return (
-		<Pane>
+		<Pane width="100%" marginBottom={majorScale(4)}>
 			<Button
-				height={32}
-				marginRight={majorScale(1)}
+				justifyContent="center"
+				height={48}
+				width="100%"
+				marginBottom={majorScale(1)}
 				iconAfter={StarIcon}
 				onClick={props.onMovePass}>
 				Looks good
 			</Button>
 			<Button
+				width="100%"
+				justifyContent="center"
 				iconAfter={InheritanceIcon}
-				marginLeft={majorScale(1)}
 				appearance="primary"
-				height={32}
+				height={48}
 				onClick={props.onMoveSave}>
 				Save move
 			</Button>

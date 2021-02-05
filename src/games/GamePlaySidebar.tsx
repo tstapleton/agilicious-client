@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Sidebar from '../components/Sidebar';
+import Sidebar from './Sidebar';
 import { selectActivePlayerId, selectCurrentPlayer, selectPlayers } from '../players/selectors';
 import { selectGameId, selectGamePhase, selectPlayersFinished } from './selectors';
-import { skipMove } from './actions';
+import { saveMove, skipMove } from './actions';
 
 export default function GamePlaySidebar() {
 	console.log('GamePlaySidebar');
@@ -25,6 +25,7 @@ export default function GamePlaySidebar() {
 	};
 	const handleMoveSave = () => {
 		console.log('handleMoveSave');
+		dispatch(saveMove(gameId, activePlayerId));
 	};
 
 	return (

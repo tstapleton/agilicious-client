@@ -68,6 +68,8 @@ export interface CloseIssueAction {
 export interface IssueMove extends BaseClientEvent {
 	issueId: IssueId;
 	points: number;
+	// // this is not for the server, but used to know how to remove the issue from the client state
+	// previousPoints: number;
 }
 export interface MoveIssueAction {
 	type: typeof CLIENT_EVENT_MOVE_ISSUE;

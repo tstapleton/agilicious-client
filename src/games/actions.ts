@@ -31,6 +31,23 @@ export function joinGame(
 	};
 }
 
+export function updatePoints(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId,
+	issueId: Types.IssueId,
+	points: number
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_MOVE_ISSUE,
+		payload: {
+			gameId,
+			issueId,
+			playerId,
+			points,
+		},
+	};
+}
+
 export function skipMove(
 	gameId: Types.GameId,
 	playerId: Types.PlayerId

@@ -2,13 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // import Modal from 'react-modal';
-// import Sidebar from '../components/Sidebar';
-// import Table from '../components/Table';
 import GamePlaySidebar from './GamePlaySidebar';
-import { selectCurrentPlayer, selectIsConnected } from '../players/selectors';
-import { joinGame } from '../games/actions';
+import { selectActivePlayerId, selectCurrentPlayer, selectIsConnected } from '../players/selectors';
+import { joinGame, updatePoints } from '../games/actions';
 import * as Types from '../types';
 import { Pane } from 'evergreen-ui';
+import Board from '../board/Board';
+import { selectColumns } from './selectors';
 
 export default function GamePlay() {
 	console.log('GamePlay');
@@ -20,6 +20,8 @@ export default function GamePlay() {
 		selectIsConnected(state, player.playerId)
 	);
 
+	const columns = useSelector(selectColumns);
+
 	const dispatch = useDispatch();
 	// TODO: error about websocket not connected yet, so quick "fix" here
 	setTimeout(() => {
@@ -29,17 +31,23 @@ export default function GamePlay() {
 		}
 	}, 1000);
 
+	const activePlayerId = useSelector(selectActivePlayerId)!;
+	const handleMove = (issueId: Types.IssueId, points: number) => {
+		console.log(`moving ${issueId} to ${points}`);
+		dispatch(updatePoints(gameId, activePlayerId, issueId, points));
+	};
+
 	return (
 		<Pane display="flex">
 			<GamePlaySidebar />
 			<Pane
-				height={120}
-				width={240}
 				display="flex"
 				flexGrow={1}
 				alignItems="center"
 				justifyContent="center"
-				border="default"></Pane>
+				border="default">
+				<Board columns={columns} onMove={handleMove} />
+			</Pane>
 		</Pane>
 		// <div className="Game">
 		// 	<div className="game-sidebar">

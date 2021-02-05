@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from './Logo';
-import Players from './Players';
+import Logo from '../components/Logo';
+import Players from '../players/Players';
 import GameActions from './GameActions';
 import * as Types from '../types';
 import { Pane, majorScale, Strong } from 'evergreen-ui';
@@ -21,7 +21,7 @@ export default function Sidebar(props: Props) {
 			flexDirection="column"
 			background="tint2"
 			height="100vh"
-			width={majorScale(34)}
+			minWidth={majorScale(34)}
 			display="flex"
 			padding={majorScale(1)}>
 			<Pane height={majorScale(6)} alignItems="center" display="flex" justifyContent="center">
@@ -35,7 +35,7 @@ export default function Sidebar(props: Props) {
 				/>
 			</Pane>
 			{props.gamePhase !== 'FINISHED' ? (
-				<Pane height={majorScale(6)} alignItems="center" display="flex" justifyContent="center">
+				<Pane height={majorScale(10)} alignItems="center" display="flex" justifyContent="center">
 					{props.currentPlayerId === props.activePlayerId && (
 						<GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />
 					)}
