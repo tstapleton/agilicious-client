@@ -1,16 +1,30 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-// import Modal from 'react-modal';
+import Modal from 'react-modal';
 import GamePlaySidebar from './GamePlaySidebar';
 import { selectActivePlayerId, selectCurrentPlayer } from '../players/selectors';
-import { joinGame, updatePoints } from '../games/actions';
+import { closeIssue, joinGame, updatePoints } from '../games/actions';
 import * as Types from '../types';
 import { Pane } from 'evergreen-ui';
 import Board from '../board/Board';
-import { selectColumns, selectHasJoined } from './selectors';
+import { selectColumns, selectHasJoined, selectOpenIssueId } from './selectors';
+import IssueModal from '../issues/IssueModal';
 
-// Modal.setAppElement('#root');
+Modal.setAppElement('#root');
+
+const modalStyles = {
+	content: {
+		bottom: 'auto',
+		height: 'calc(100vh - 200px)',
+		left: '50%',
+		marginRight: '-50%',
+		maxWidth: '800px',
+		right: 'auto',
+		top: '50%',
+		transform: 'translate(-50%, -50%)',
+	},
+};
 
 export default function GamePlay() {
 	console.log('GamePlay');
@@ -37,21 +51,29 @@ export default function GamePlay() {
 		dispatch(updatePoints(gameId, activePlayerId, issueId, points));
 	};
 
+	const openIssueId = useSelector(selectOpenIssueId);
+	const handleModalClose = () => {
+		if (openIssueId) {
+			dispatch(closeIssue(gameId, player.playerId, openIssueId));
+		}
+	};
+
 	return (
-		<Pane display="flex">
-			<GamePlaySidebar />
-			<Pane
-				display="flex"
-				flexGrow={1}
-				alignItems="center"
-				justifyContent="center"
-				border="default">
-				<Board columns={columns} onMove={handleMove} />
+		<>
+			<Pane display="flex">
+				<GamePlaySidebar />
+				<Pane
+					display="flex"
+					flexGrow={1}
+					alignItems="center"
+					justifyContent="center"
+					border="default">
+					<Board columns={columns} onMove={handleMove} />
+				</Pane>
 			</Pane>
-		</Pane>
-		// 	<Modal isOpen={props.modalIsOpen} onRequestClose={props.onModalClose}>
-		// 		<h1>Hello from modal {props.modalIssue && props.modalIssue.title}</h1>
-		// 	</Modal>
-		// </div>
+			<Modal isOpen={!!openIssueId} onRequestClose={handleModalClose} style={modalStyles}>
+				{!!openIssueId && <IssueModal issueId={openIssueId!} />}
+			</Modal>
+		</>
 	);
 }

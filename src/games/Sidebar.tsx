@@ -34,7 +34,7 @@ export default function Sidebar(props: Props) {
 					activePlayerId={props.activePlayerId}
 				/>
 			</Pane>
-			{props.gamePhase !== 'FINISHED' ? (
+			{props.gamePhase !== 'GAME_OVER' ? (
 				<Pane height={majorScale(10)} alignItems="center" display="flex" justifyContent="center">
 					{props.currentPlayerId === props.activePlayerId && (
 						<GameActions onMovePass={props.onMovePass} onMoveSave={props.onMoveSave} />

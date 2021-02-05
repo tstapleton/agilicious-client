@@ -4,9 +4,9 @@ import { Button, Pane, majorScale } from 'evergreen-ui';
 import { v4 } from 'uuid';
 import Logo from './components/Logo';
 
-const gameId = v4();
-
 export default function Home() {
+	const gameId = v4();
+
 	return (
 		<Pane marginTop={majorScale(5)}>
 			<Logo variant="large" />

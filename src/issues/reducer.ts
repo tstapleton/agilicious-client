@@ -11,6 +11,7 @@ export function issuesReducer(
 	switch (action.type) {
 		case Types.SERVER_EVENT_GAME_STATE:
 			return {
+				...state,
 				byId: action.payload.issues.reduce(
 					(result: Types.IssuesById, current: Types.Issue) => ({
 						...result,
@@ -18,6 +19,15 @@ export function issuesReducer(
 					}),
 					{}
 				),
+			};
+		case Types.SERVER_EVENT_ISSUE_MOVED:
+			const { issue } = action.payload;
+			return {
+				...state,
+				byId: {
+					...state.byId,
+					[issue.id]: issue,
+				},
 			};
 		default:
 			return state;
