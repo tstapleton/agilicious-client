@@ -6,7 +6,7 @@ import { connectToServer } from './web-socket/actions';
 import { selectIsOpen } from './web-socket/selectors';
 
 const protocol = process.env.NODE_ENV === 'production' ? 'wss' : 'ws';
-const socketUrl = `${protocol}://localhost:8000`;
+const socketUrl = `${protocol}://${process.env.REACT_APP_BASE_URL}`;
 
 export default function App() {
 	const isOpen = useSelector(selectIsOpen);
