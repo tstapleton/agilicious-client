@@ -56,6 +56,13 @@ export function playersReducer(
 				}),
 			};
 		}
+		case Types.SERVER_EVENT_PLAYER_SKIPPED: {
+			const { activePlayerId } = action.payload;
+			return {
+				...state,
+				activePlayerId,
+			};
+		}
 		default:
 			return state;
 	}

@@ -30,3 +30,29 @@ export function joinGame(
 		},
 	};
 }
+
+export function skipMove(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_SKIP_MOVE,
+		payload: {
+			gameId,
+			playerId,
+		},
+	};
+}
+
+export function saveMove(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_SAVE_MOVE,
+		payload: {
+			gameId,
+			playerId,
+		},
+	};
+}

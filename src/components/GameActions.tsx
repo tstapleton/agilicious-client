@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Pane, majorScale } from 'evergreen-ui';
+import { Button, Pane, majorScale, StarIcon, InheritanceIcon } from 'evergreen-ui';
 
 interface Props {
 	onMovePass: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -9,13 +9,18 @@ interface Props {
 export default function GameActions(props: Props) {
 	return (
 		<Pane>
-			<Button height={40} marginRight={majorScale(1)} onClick={props.onMovePass}>
+			<Button
+				height={32}
+				marginRight={majorScale(1)}
+				iconAfter={StarIcon}
+				onClick={props.onMovePass}>
 				Looks good
 			</Button>
 			<Button
+				iconAfter={InheritanceIcon}
 				marginLeft={majorScale(1)}
 				appearance="primary"
-				height={40}
+				height={32}
 				onClick={props.onMoveSave}>
 				Save move
 			</Button>
