@@ -23,7 +23,7 @@ export default function Card(props: Props) {
 					background={snapshot.isDragging ? 'lightgreen' : 'white'}
 					transition="background-color 2s ease">
 					<Heading size={400}>
-						{props.issue.id} • {props.issue.title}
+						{props.issue.key} • {props.issue.title}
 					</Heading>
 				</Pane>
 			)}
