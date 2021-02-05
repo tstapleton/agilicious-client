@@ -31,20 +31,20 @@ export default function Players(props: Props) {
 					<Avatar
 						src={getAvatarURLForPlayer(player)}
 						alt="avatar"
-						size={majorScale(5)}
+						size={72}
 						display="inline-block"
 						marginBottom="-4px"
 					/>
-					<Text flexGrow={1} verticalAlign="top" lineHeight="40px" paddingLeft={majorScale(1)}>
+					<Text flexGrow={1} verticalAlign="top" lineHeight="72px" paddingLeft={majorScale(1)}>
 						{player.name}
 					</Text>
 					{isFinished(player.id) && (
-						<StarIcon size={20} color="muted" marginRight="10px" marginTop="9px"></StarIcon>
+						<StarIcon size={20} color="muted" marginRight="10px" marginTop="27px"></StarIcon>
 					)}
 					<SymbolCircleIcon
 						color={player.connected ? 'success' : 'danger'}
 						size={12}
-						marginTop="14px"
+						marginTop="33px"
 					/>
 				</Pane>
 			))}
