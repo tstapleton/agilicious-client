@@ -99,9 +99,11 @@ export default function IssueModal(props: Props) {
 					onChange={handleCommentChange}
 				/>
 			</Pane>
-			<Button appearance="primary" onClick={handleAddComment}>
-				Add comment
-			</Button>
+			<Pane display="flex" flexDirection="row-reverse">
+				<Button appearance="primary" onClick={handleAddComment} height={40} marginTop="12px">
+					Add comment
+				</Button>
+			</Pane>
 		</Pane>
 	);
 }
