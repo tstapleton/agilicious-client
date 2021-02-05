@@ -21,7 +21,7 @@ export interface BaseClientEvent {
 }
 
 export interface GameCreate extends BaseClientEvent {
-	avatarSetId: AvatarSetId;
+	avatarSetId?: AvatarSetId;
 	name: PlayerName;
 }
 export interface CreateGameAction {

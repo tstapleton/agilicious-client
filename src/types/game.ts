@@ -1,5 +1,5 @@
 import { UUID } from './common';
-import { PlayerId } from './player';
+import { AvatarId, PlayerId } from './player';
 import { IssueId } from './issue';
 
 export type AvatarSetId = UUID;
@@ -17,4 +17,9 @@ export interface GameState {
 	gameId?: GameId;
 	phase: Phase;
 	playersFinished: Array<PlayerId>;
+}
+
+export interface AvatarSet {
+	avatarSetId: AvatarId;
+	avatarIds: Array<AvatarId>;
 }

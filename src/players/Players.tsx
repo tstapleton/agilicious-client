@@ -1,21 +1,13 @@
 import React from 'react';
-import bird from '../icons/bird.svg';
-import birdTwo from '../icons/bird-2.svg';
-import chicken from '../icons/chicken.svg';
-import fox from '../icons/fox.svg';
-import hedgehog from '../icons/hedgehog.svg';
-import rabbit from '../icons/rabbit.svg';
-import squirrel from '../icons/squirrel.svg';
 import * as Types from '../types';
 import { Pane, Heading, Avatar, majorScale, Text, SymbolCircleIcon, StarIcon } from 'evergreen-ui';
+import { getAvatarURLForPlayer } from '../utils/URL';
 
 interface Props {
 	activePlayerId: string;
 	players: Types.Player[];
 	playersFinished: Types.PlayerId[];
 }
-
-const icons = [bird, birdTwo, chicken, fox, hedgehog, rabbit, squirrel];
 
 export default function Players(props: Props) {
 	const isFinished = (playerId: Types.PlayerId) => props.playersFinished.includes(playerId);
@@ -37,7 +29,7 @@ export default function Players(props: Props) {
 					display="flex">
 					{/* looks more correctly vertically aligned with -4px bottom margin */}
 					<Avatar
-						src={icons[index]}
+						src={getAvatarURLForPlayer(player)}
 						alt="avatar"
 						size={majorScale(5)}
 						display="inline-block"

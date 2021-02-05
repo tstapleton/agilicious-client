@@ -8,7 +8,7 @@ export function createGame(
 	return {
 		type: Types.CLIENT_EVENT_CREATE_GAME,
 		payload: {
-			avatarSetId: '46efff1b-5ca2-57fc-8e98-f1bad529f45f',
+			// avatarSetId: '46efff1b-5ca2-57fc-8e98-f1bad529f45f',
 			gameId,
 			playerId,
 			name,
