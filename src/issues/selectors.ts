@@ -7,3 +7,6 @@ export const selectIssues = (state: Types.RootState, issueIds: Array<Types.Issue
 
 	return issueIds.map((issueId: Types.IssueId) => state.issues.byId[issueId]);
 };
+
+export const selectIssueById = (state: Types.RootState, issueId: Types.IssueId) =>
+	state.issues.byId[issueId];

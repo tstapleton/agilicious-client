@@ -38,6 +38,7 @@ export default function Column(props: Props) {
 						transition="background-color 0.5s ease"
 						background={snapshot.isDraggingOver ? 'skyblue' : 'white'}
 						flexGrow={1}
+						overflowY="scroll"
 						padding={majorScale(1)}>
 						{issues.map((issue: Types.Issue, index: number) => (
 							<Card key={issue.id} issue={issue} index={index} />

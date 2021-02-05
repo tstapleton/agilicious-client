@@ -2,9 +2,15 @@ import { UUID } from './common';
 
 export type IssueId = UUID;
 
+export interface Comment {
+	author: string;
+	body: string;
+}
+
 export interface Issue {
 	id: IssueId;
 	acceptanceCriteria: string;
+	comments: Comment[];
 	created: number;
 	currentPoints: number;
 	description: string;

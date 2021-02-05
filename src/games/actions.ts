@@ -73,3 +73,50 @@ export function saveMove(
 		},
 	};
 }
+
+export function openIssue(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId,
+	issueId: Types.IssueId
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_OPEN_ISSUE,
+		payload: {
+			gameId,
+			playerId,
+			issueId,
+		},
+	};
+}
+
+export function closeIssue(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId,
+	issueId: Types.IssueId
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_CLOSE_ISSUE,
+		payload: {
+			gameId,
+			playerId,
+			issueId,
+		},
+	};
+}
+
+export function addComment(
+	gameId: Types.GameId,
+	playerId: Types.PlayerId,
+	issueId: Types.IssueId,
+	comment: string
+): Types.ClientEventActionTypes {
+	return {
+		type: Types.CLIENT_EVENT_ADD_COMMENT,
+		payload: {
+			gameId,
+			playerId,
+			issueId,
+			comment,
+		},
+	};
+}

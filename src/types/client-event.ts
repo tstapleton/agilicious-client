@@ -12,6 +12,8 @@ export const CLIENT_EVENT_OPEN_ISSUE = 'CLIENT_EVENT::OPEN_ISSUE';
 export const CLIENT_EVENT_CLOSE_ISSUE = 'CLIENT_EVENT::CLOSE_ISSUE';
 export const CLIENT_EVENT_MOVE_ISSUE = 'CLIENT_EVENT::UPDATE_POINTS';
 
+export const CLIENT_EVENT_ADD_COMMENT = 'CLIENT_EVENT::ADD_COMMENT';
+
 // i don't remember why, but the payloads are in the form $Noun$Verb
 // and the actions are in the form $Verb$NounAction
 
@@ -68,12 +70,19 @@ export interface CloseIssueAction {
 export interface IssueMove extends BaseClientEvent {
 	issueId: IssueId;
 	points: number;
-	// // this is not for the server, but used to know how to remove the issue from the client state
-	// previousPoints: number;
 }
 export interface MoveIssueAction {
 	type: typeof CLIENT_EVENT_MOVE_ISSUE;
 	payload: IssueMove;
+}
+
+export interface AddComment extends BaseClientEvent {
+	issueId: IssueId;
+	comment: string;
+}
+export interface CommentAddAction {
+	type: typeof CLIENT_EVENT_ADD_COMMENT;
+	payload: AddComment;
 }
 
 export type ClientEventActionTypes =
@@ -83,4 +92,5 @@ export type ClientEventActionTypes =
 	| SaveMoveAction
 	| OpenIssueAction
 	| CloseIssueAction
-	| MoveIssueAction;
+	| MoveIssueAction
+	| CommentAddAction;

@@ -6,6 +6,7 @@ const initialState: Types.GameState = {
 	columns: points.map((points: number) => ({ points, issueIds: [] })),
 	phase: 'START',
 	playersFinished: [],
+	ui: {},
 };
 
 type IssueIdsByPoints = Record<number, Array<Types.IssueId>>;
@@ -60,6 +61,13 @@ export function gameReducer(state = initialState, action: Types.EventActionTypes
 							issueIds: column.issueIds.filter((issueId: Types.IssueId) => issueId !== issue.id),
 						};
 					}
+					// adding a comment also responds with this event so the points
+					// might not have actually changed
+					if (column.issueIds.includes(issue.id)) {
+						return {
+							...column,
+						};
+					}
 					return {
 						...column,
 						issueIds: [...column.issueIds, issue.id],
@@ -77,6 +85,24 @@ export function gameReducer(state = initialState, action: Types.EventActionTypes
 				...state,
 				phase,
 				playersFinished: [...state.playersFinished, eventByPlayerId],
+			};
+		}
+		case Types.SERVER_EVENT_ISSUE_OPENED: {
+			return {
+				...state,
+				ui: {
+					...state.ui,
+					openIssueId: action.payload.issueId,
+				},
+			};
+		}
+		case Types.SERVER_EVENT_ISSUE_CLOSED: {
+			return {
+				...state,
+				ui: {
+					...state.ui,
+					openIssueId: undefined,
+				},
 			};
 		}
 		default:

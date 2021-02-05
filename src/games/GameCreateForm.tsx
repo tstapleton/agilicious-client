@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import {
-	Button,
-	FormField,
-	FilePicker,
-	TextInputField,
-	Pane,
-	Paragraph,
-	majorScale,
-} from 'evergreen-ui';
+import { Button, TextInputField, Pane, Paragraph, majorScale } from 'evergreen-ui';
 import Logo from '../components/Logo';
 import * as Types from '../types';
 import AvatarSetSelector from '../components/AvatarSetSelector';
 
 interface Props {
 	gameId: Types.GameId;
-	onSubmit: (playerName: Types.PlayerName, files: FileList, avatarSetId: Types.AvatarSetId) => void;
+	onSubmit: (playerName: Types.PlayerName, avatarSetId: Types.AvatarSetId) => void;
 	playerName: Types.PlayerName;
 }
 
@@ -24,14 +16,8 @@ export default function GameCreateForm(props: Props) {
 	const handlePlayerNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
 		setPlayerName(event.target.value);
 
-	const [files, setFiles] = useState<FileList>();
-	const handleFileUpload = (files: FileList) => setFiles(files);
-
 	const handleSubmit = () => {
-		if (!files) {
-			return;
-		}
-		props.onSubmit(playerName, files, avatarSetId);
+		props.onSubmit(playerName, avatarSetId);
 	};
 
 	const handleSelectAvatarSet = (selectedAvatarSetId: Types.AvatarSetId) => {
@@ -48,13 +34,6 @@ export default function GameCreateForm(props: Props) {
 					onChange={handlePlayerNameChange}
 					value={playerName}
 				/>
-				<FormField label="Jira issues">
-					<FilePicker
-						accept=".csv"
-						onChange={handleFileUpload}
-						placeholder="Upload export from Jira"
-					/>
-				</FormField>
 			</Pane>
 			<Pane marginTop={majorScale(4)}>
 				<AvatarSetSelector selectedAvatarSetId={avatarSetId} onSelect={handleSelectAvatarSet} />
