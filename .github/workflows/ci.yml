@@ -11,9 +11,6 @@ jobs:
       matrix:
         node-version: [14.x]
 
-    env:
-      CI: true
-
     steps:
     - uses: actions/checkout@v2
 
@@ -29,4 +26,4 @@ jobs:
       run: npm run compile
 
     - name: test
-      run: npm test
+      run: npm run test:ci
