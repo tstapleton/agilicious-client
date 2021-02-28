@@ -17,12 +17,12 @@ describe('state/local-storage', () => {
 			}),
 		};
 	};
-	Object.defineProperty(global, 'localStorage', {
-		value: localStorageMock(),
-		writable: true,
-	});
 
 	beforeEach(() => {
+		Object.defineProperty(global, 'localStorage', {
+			value: localStorageMock(),
+			writable: true,
+		});
 		global.localStorage.clear();
 	});
 	describe('loadState', () => {
