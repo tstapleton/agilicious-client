@@ -18,6 +18,7 @@
 		"@types/react-router-dom": "^5.1.5",
 		"@types/uuid": "8.0.0",
 		"@types/webpack-env": "1.16.0",
+		"cypress": "6.5.0",
 		"docz": "2.3.1",
 		"evergreen-ui": "5.1.2",
 		"react": "^16.13.1",
@@ -35,13 +36,17 @@
 		"uuid": "^8.1.0"
 	},
 	"scripts": {
-		"compile": "tsc",
+		"compile": "npm run compile:source && npm run compile:cypress",
+		"compile:source": "tsc",
+		"compile:cypress": "tsc --project cypress/tsconfig.json",
 		"dev": "PORT=3001 REACT_APP_BASE_URL=localhost:8000 react-scripts start",
 		"docz": "docz dev",
 		"format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,md}'",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
+		"test:cypress": "cypress run",
+		"test:ci": "CI=true npm test && npm run test:cypress",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
