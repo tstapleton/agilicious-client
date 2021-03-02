@@ -3,51 +3,48 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@giantmachines/redux-websocket": "1.4.0",
-		"@reduxjs/toolkit": "1.5.0",
 		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^9.5.0",
-		"@testing-library/user-event": "^7.2.1",
 		"@types/jest": "^26.0.0",
 		"@types/node": "^14.0.13",
 		"@types/react": "^16.9.36",
-		"@types/react-beautiful-dnd": "13.0.0",
+		"@types/react-beautiful-dnd": "^13.0.0",
 		"@types/react-dom": "^16.9.8",
-		"@types/react-modal": "3.10.5",
-		"@types/react-redux": "7.1.16",
+		"@types/react-modal": "^3.10.5",
+		"@types/react-redux": "^7.1.16",
 		"@types/react-router-dom": "^5.1.5",
-		"@types/uuid": "8.0.0",
-		"@types/webpack-env": "1.16.0",
-		"cypress": "6.5.0",
-		"docz": "2.3.1",
-		"evergreen-ui": "5.1.2",
+		"@types/uuid": "^8.0.0",
+		"@types/webpack-env": "^1.16.0",
+		"cypress": "^6.5.0",
+		"docz": "^2.3.1",
+		"evergreen-ui": "^5.1.2",
+		"husky": "^4.2.5",
+		"lint-staged": "^10.2.11",
+		"prettier": "^2.0.5",
 		"react": "^16.13.1",
-		"react-beautiful-dnd": "13.0.0",
+		"react-beautiful-dnd": "^13.0.0",
 		"react-dom": "^16.13.1",
 		"react-modal": "^3.11.2",
-		"react-redux": "7.2.2",
+		"react-redux": "^7.2.2",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "3.4.1",
-		"react-trello": "2.2.6",
-		"react-use-localstorage": "^3.4.1",
-		"react-use-websocket": "^2.0.2",
-		"redux-devtools-extension": "2.13.8",
-		"typescript": "^3.9.5",
+		"react-scripts": "^4.0.3",
+		"redux": "^4.0.5",
+		"redux-devtools-extension": "^2.13.8",
+		"typescript": "^4.2.2",
 		"uuid": "^8.1.0"
 	},
 	"scripts": {
+		"build": "react-scripts build",
 		"compile": "npm run compile:source && npm run compile:cypress",
-		"compile:source": "tsc",
 		"compile:cypress": "tsc --project cypress/tsconfig.json",
+		"compile:source": "tsc",
 		"dev": "PORT=3001 REACT_APP_BASE_URL=localhost:8000 react-scripts start",
 		"docz": "docz dev",
+		"eject": "react-scripts eject",
 		"format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,md}'",
 		"start": "react-scripts start",
-		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"test:cypress": "cypress run",
 		"test:ci": "CI=true npm test && npm run test:cypress",
-		"eject": "react-scripts eject"
+		"test:cypress": "cypress run"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -74,10 +71,5 @@
 		"*.{js,jsx,ts,tsx,json,css,md}": [
 			"prettier --write"
 		]
-	},
-	"devDependencies": {
-		"husky": "4.2.5",
-		"lint-staged": "10.2.11",
-		"prettier": "2.0.5"
 	}
 }
