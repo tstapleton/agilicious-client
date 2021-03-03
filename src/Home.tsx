@@ -11,7 +11,7 @@ export default function Home() {
 		<Pane marginTop={majorScale(5)}>
 			<Logo variant="large" />
 			<Pane textAlign="center" marginTop={majorScale(2)}>
-				<Button is={Link} to={`/games/${gameId}/create`} appearance="primary">
+				<Button data-cy="new-game" is={Link} to={`/games/${gameId}/create`} appearance="primary">
 					Start a new game
 				</Button>
 			</Pane>

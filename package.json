@@ -23,6 +23,7 @@
 		"evergreen-ui": "^5.1.2",
 		"husky": "^4.2.5",
 		"lint-staged": "^10.2.11",
+		"mock-socket": "^9.0.3",
 		"prettier": "^2.0.5",
 		"react": "^16.13.1",
 		"react-beautiful-dnd": "^13.0.0",
@@ -50,7 +51,8 @@
 		"test": "react-scripts test",
 		"test:ci": "npm run test:unit:coverage && npm run test:e2e",
 		"test:e2e": "start-server-and-test test:e2e:server http://localhost:3001 test:e2e:start",
-		"test:e2e:server": "PORT=3001 react-scripts -r @cypress/instrument-cra start",
+		"test:e2e:dev": "cypress open",
+		"test:e2e:server": "PORT=3001 REACT_APP_BASE_URL=localhost:1337 react-scripts -r @cypress/instrument-cra start",
 		"test:e2e:start": "cypress run",
 		"test:unit:coverage": "CI=true npm test -- --coverage"
 	},

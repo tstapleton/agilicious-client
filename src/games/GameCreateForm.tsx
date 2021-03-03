@@ -29,6 +29,7 @@ export default function GameCreateForm(props: Props) {
 			<Logo variant="small" />
 			<Pane marginTop={majorScale(6)} width={majorScale(50)} marginRight="auto">
 				<TextInputField
+					data-cy="create-game-name"
 					label="Player name"
 					placeholder="Your name"
 					onChange={handlePlayerNameChange}
@@ -39,7 +40,7 @@ export default function GameCreateForm(props: Props) {
 				<AvatarSetSelector selectedAvatarSetId={avatarSetId} onSelect={handleSelectAvatarSet} />
 			</Pane>
 			<Pane textAlign="center" marginTop={majorScale(4)}>
-				<Button appearance="primary" onClick={handleSubmit}>
+				<Button data-cy="create-game" appearance="primary" onClick={handleSubmit}>
 					Start a new game
 				</Button>
 			</Pane>
