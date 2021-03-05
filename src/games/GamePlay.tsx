@@ -60,7 +60,7 @@ export default function GamePlay() {
 
 	return (
 		<>
-			<Pane display="flex">
+			<Pane display="flex" data-cy="game-play-container">
 				<GamePlaySidebar />
 				<Pane
 					display="flex"
